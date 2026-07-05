@@ -1,48 +1,70 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Luxury Birthday Card — Teacher</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Sans+Arabic:wght@200..900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<title>Happy Birthday, Dear Miss</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Amiri:ital,wght@0,400;0,700&family=Noto+Sans+Arabic:wght@100..900&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
   @page { size: A4 portrait; margin: 0; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  /* ΓöÇΓöÇ Desk / Presentation Background ΓöÇΓöÇ */
   body {
     margin: 0;
     background:
       radial-gradient(ellipse at 50% 0%, #2a241c 0%, transparent 60%),
       radial-gradient(ellipse at 50% 100%, #0d0b09 0%, transparent 70%),
       linear-gradient(180deg, #1a1511 0%, #2a231c 30%, #1e1813 60%, #0f0c09 100%);
+    font-family: 'Noto Sans Arabic', 'Amiri', serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(90deg, transparent, transparent 120px, rgba(0,0,0,0.025) 120px, rgba(0,0,0,0.025) 121px);
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 120px, rgba(0,0,0,0.03) 120px, rgba(0,0,0,0.03) 121px),
+      repeating-linear-gradient(0deg, transparent, transparent 120px, rgba(0,0,0,0.02) 120px, rgba(0,0,0,0.02) 121px);
     pointer-events: none;
     z-index: 0;
   }
 
+  /* ΓöÇΓöÇ Responsive Card Wrapper ΓöÇΓöÇ */
   .card-wrapper {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
-    min-height: 100svh;
-    padding: 20px;
+    height: 100svh;
+    padding: 12px;
     box-sizing: border-box;
+    overflow: hidden;
     z-index: 1;
   }
+  .card-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    width: 70%;
+    height: 4%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(0,0,0,0.5) 0%, transparent 70%);
+    filter: blur(8px);
+    z-index: 0;
+    pointer-events: none;
+  }
 
+  /* ΓöÇΓöÇ Card Container ΓöÇΓöÇ */
   .card {
     position: relative;
     width: 210mm;
-    max-width: 100%;
-    aspect-ratio: 210 / 297;
+    height: 297mm;
     overflow: hidden;
     background: #f8f6f1;
     box-shadow:
@@ -50,273 +72,328 @@
       0 8px 24px rgba(0,0,0,0.12),
       0 32px 64px rgba(0,0,0,0.18),
       0 60px 100px rgba(0,0,0,0.3);
-    border-radius: 2px;
+    transform-origin: center center;
     flex-shrink: 0;
+    z-index: 1;
+    transition: transform 0.2s ease-out;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(212,175,55,0.08);
   }
 
-  /* ── MARBLE ── */
+  /* ΓöÇΓöÇ Marble Background ΓöÇΓöÇ */
   .marble-bg {
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse at 10% 35%, rgba(255,255,250,0.95) 0%, transparent 55%),
-      radial-gradient(ellipse at 90% 30%, rgba(255,248,235,0.8) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 80%, rgba(245,240,230,0.7) 0%, transparent 45%),
-      linear-gradient(170deg, #fcfaf6 0%, #f7f3ec 30%, #f2ede4 55%, #f6f1e9 80%, #faf6ef 100%);
+      radial-gradient(ellipse at 15% 40%, rgba(255,255,245,0.95) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 25%, rgba(255,248,235,0.85) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 85%, rgba(245,240,230,0.75) 0%, transparent 45%),
+      linear-gradient(160deg, #faf8f3 0%, #f7f3ec 25%, #f2ede4 50%, #f6f1e9 75%, #faf6ef 100%);
     z-index: 0;
   }
-
-  /* All internal elements use % relative to .card */
-  .card-inner {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
   .marble-veins {
     position: absolute;
     inset: 0;
     z-index: 0;
-    opacity: 0.12;
   }
   .marble-veins svg { width: 100%; height: 100%; }
 
+  /* ΓöÇΓöÇ Paper Grain ΓöÇΓöÇ */
   .paper-grain {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.025;
+    opacity: 0.03;
     mix-blend-mode: multiply;
   }
   .paper-grain svg { width: 100%; height: 100%; }
 
+  /* ΓöÇΓöÇ Cinematic Glow ΓöÇΓöÇ */
   .glow-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
     background:
-      radial-gradient(ellipse at 50% 25%, rgba(255,215,150,0.1) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 75%, rgba(255,200,150,0.05) 0%, transparent 40%);
+      radial-gradient(ellipse at 50% 22%, rgba(255,215,150,0.12) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 70%, rgba(255,200,150,0.06) 0%, transparent 40%);
   }
 
-  .bokeh {
+  /* ΓöÇΓöÇ Gold Glow Behind Title ΓöÇΓöÇ */
+  .title-glow {
     position: absolute;
-    inset: 0;
-    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: 140mm;
+    height: 80mm;
+    transform: translate(-50%, -85%);
+    z-index: 1;
     pointer-events: none;
-    overflow: visible;
+    background: radial-gradient(ellipse, rgba(212,175,55,0.08) 0%, rgba(245,230,163,0.04) 40%, transparent 70%);
+    filter: blur(20px);
   }
-  .bokeh svg { width: 100%; height: 100%; }
 
+  /* ΓöÇΓöÇ Gold Borders ΓöÇΓöÇ */
   .gold-border-outer {
     position: absolute;
-    top: 4.76%; left: 4.76%; right: 4.76%; bottom: 4.76%;
-    border: 2.5px solid;
-    border-image: linear-gradient(135deg, #f5e6a3, #d4af37, #c8a84e, #f5e6a3, #b8860b) 1;
-    z-index: 4;
+    top: 12mm; left: 12mm; right: 12mm; bottom: 12mm;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    z-index: 2;
     pointer-events: none;
-    box-shadow: 0 0 12px rgba(212,175,55,0.08), inset 0 0 12px rgba(212,175,55,0.04);
+    box-shadow: 0 0 8px rgba(212,175,55,0.08), inset 0 0 8px rgba(212,175,55,0.05);
   }
   .gold-border-inner {
     position: absolute;
-    top: 6.43%; left: 6.43%; right: 6.43%; bottom: 6.43%;
-    border: 1px solid rgba(212,175,55,0.2);
-    z-index: 4;
+    top: 15.5mm; left: 15.5mm; right: 15.5mm; bottom: 15.5mm;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    z-index: 2;
     pointer-events: none;
-    box-shadow: inset 0 0 6px rgba(212,175,55,0.03);
+    box-shadow: inset 0 0 4px rgba(212,175,55,0.04);
   }
 
+  /* ΓöÇΓöÇ Filigree Corners ΓöÇΓöÇ */
   .corner {
     position: absolute;
-    width: 13%;
-    height: 9.4%;
-    z-index: 5;
+    width: 32mm;
+    height: 32mm;
+    z-index: 3;
     pointer-events: none;
   }
   .corner svg { width: 100%; height: 100%; overflow: visible; }
-  .corner-tl { top: 3.8%; left: 3.8%; }
-  .corner-tr { top: 3.8%; right: 3.8%; transform: scaleX(-1); }
-  .corner-bl { bottom: 3.8%; left: 3.8%; transform: scaleY(-1); }
-  .corner-br { bottom: 3.8%; right: 3.8%; transform: scale(-1, -1); }
+  .corner-tl { top: 10mm; left: 10mm; }
+  .corner-tr { top: 10mm; right: 10mm; transform: scaleX(-1); }
+  .corner-bl { bottom: 10mm; left: 10mm; transform: scaleY(-1); }
+  .corner-br { bottom: 10mm; right: 10mm; transform: scale(-1, -1); }
 
+  /* ΓöÇΓöÇ Ribbon ΓöÇΓöÇ */
   .ribbon {
     position: absolute;
-    z-index: 4;
+    z-index: 2;
     pointer-events: none;
   }
   .ribbon svg { width: 100%; height: 100%; }
-  .ribbon-top { top: 0; left: 0; width: 100%; height: 2%; opacity: 0.25; }
-  .ribbon-bottom { bottom: 0; left: 0; width: 100%; height: 2%; opacity: 0.25; transform: scaleY(-1); }
+  .ribbon-top { top: 0; left: 0; width: 100%; height: 8mm; opacity: 0.35; }
+  .ribbon-bottom { bottom: 0; left: 0; width: 100%; height: 8mm; opacity: 0.35; transform: scaleY(-1); }
 
-  .emblem {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 43%;
-    height: 30%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.04;
-  }
-  .emblem svg { width: 100%; height: 100%; filter: drop-shadow(0 0 8px rgba(212,175,55,0.1)); }
-
-  .flower {
-    position: absolute;
+  /* ΓöÇΓöÇ Content ΓöÇΓöÇ */
+  .content {
+    position: relative;
     z-index: 4;
-    pointer-events: none;
-  }
-  .flower svg { width: 100%; height: 100%; overflow: visible; }
-  .flower-tl { top: 1%; left: 1%; width: 38%; height: 27%; opacity: 0.5; }
-  .flower-br { bottom: 1%; right: 1%; width: 40%; height: 28%; opacity: 0.55; }
-
-  .pen {
-    position: absolute;
-    bottom: 23%; right: 8.5%;
-    z-index: 5;
-    pointer-events: none;
-    width: 16.5%;
-    height: 12%;
-    opacity: 0.2;
-    transform: rotate(-25deg);
-  }
-  .pen svg { width: 100%; height: 100%; }
-
-  .book {
-    position: absolute;
-    bottom: 6%; left: 8.5%;
-    z-index: 5;
-    pointer-events: none;
-    width: 21%;
-    height: 13%;
-    opacity: 0.1;
-  }
-  .book svg { width: 100%; height: 100%; }
-
-  .star {
-    position: absolute;
-    z-index: 4;
-    pointer-events: none;
-    opacity: 0.45;
-  }
-  .star svg { width: 100%; height: 100%; overflow: visible; }
-  .star-1 { top: 16%; left: 12.4%; width: 2.8%; height: 2%; }
-  .star-2 { top: 19.5%; right: 14.3%; width: 2.1%; height: 1.5%; }
-  .star-3 { top: 37%; left: 9.5%; width: 2.4%; height: 1.7%; }
-  .star-4 { bottom: 40.5%; right: 10.5%; width: 3.1%; height: 2.2%; }
-  .star-5 { bottom: 30%; left: 13.3%; width: 1.7%; height: 1.2%; }
-  .star-6 { top: 25%; right: 52%; width: 1.9%; height: 1.35%; opacity: 0.3; }
-
-  .top-text {
-    position: absolute;
-    top: 8.8%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 6;
-    text-align: center;
-    pointer-events: none;
-  }
-  .top-text .sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.9%;
-    font-weight: 300;
-    font-style: italic;
-    color: rgba(160,145,130,0.5);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-  }
-  .top-text .separator {
-    width: 14%;
-    height: 0.5px;
-    margin: 2mm auto 0;
-    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.25), transparent);
-  }
-
-  .glass-panel {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 6;
-    width: 62%;
-    min-height: 30%;
-    max-height: 70%;
-    background: rgba(255,255,252,0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(212,175,55,0.2);
-    border-radius: 2mm;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.04), 0 1px 4px rgba(212,175,55,0.06), inset 0 0 30px rgba(255,255,252,0.5);
+    width: 100%;
+    height: 100%;
+    padding: 32mm 20mm 26mm;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 5% 6%;
-    direction: rtl;
-    text-align: right;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(212,175,55,0.3) transparent;
-  }
-  .glass-panel::-webkit-scrollbar { width: 3px; }
-  .glass-panel::-webkit-scrollbar-track { background: transparent; }
-  .glass-panel::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.3); border-radius: 3px; }
-  .glass-panel::before {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    border-radius: 1.8mm;
-    border: 1px solid rgba(255,255,255,0.4);
-    pointer-events: none;
-  }
-  .glass-panel .arabic-text {
-    font-family: 'Noto Sans Arabic', sans-serif;
-    font-size: 2%;
-    font-weight: 350;
-    line-height: 1.7;
-    color: #2a241c;
-    direction: rtl;
-    text-align: justify;
-    width: 100%;
-    hyphens: auto;
-  }
-
-  .bottom-text {
-    position: absolute;
-    bottom: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 6;
+    justify-content: center;
     text-align: center;
-    pointer-events: none;
-  }
-  .bottom-text .quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2%;
-    font-style: italic;
-    color: rgba(140,125,110,0.35);
-    letter-spacing: 1.5px;
-    font-weight: 300;
-    width: 60%;
-    margin: 0 auto;
   }
 
+  /* ΓöÇΓöÇ Top Ornament ΓöÇΓöÇ */
+  .top-ornament {
+    margin-bottom: 12mm;
+    opacity: 0.5;
+  }
+  .top-ornament svg { width: 65mm; height: auto; }
+
+  /* ΓöÇΓöÇ English Title ΓöÇΓöÇ */
+  .title-en {
+    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-size: 14.5mm;
+    font-weight: 700;
+    color: #c8a84e;
+    letter-spacing: 4.5px;
+    line-height: 1.2;
+    margin-bottom: 2mm;
+    position: relative;
+    text-rendering: optimizeLegibility;
+    text-shadow:
+      0 0 60px rgba(212,175,55,0.18),
+      0 1px 1px rgba(255,248,220,0.5),
+      0 2px 3px rgba(0,0,0,0.08),
+      0 4px 10px rgba(212,175,55,0.08);
+    background-image: linear-gradient(180deg, #f5e6a3 0%, #e8c84a 20%, #d4af37 40%, #c8a84e 55%, #b8962e 75%, #a07820 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(180,150,40,0.15));
+  }
+  @supports not (background-clip: text) {
+    .title-en {
+      color: #c8a84e;
+      -webkit-text-fill-color: #c8a84e;
+    }
+  }
+
+  /* ΓöÇΓöÇ Divider ΓöÇΓöÇ */
+  .divider {
+    margin: 5mm 0;
+    opacity: 0.35;
+    width: 55mm;
+  }
+  .divider svg { width: 100%; height: auto; }
+
+  /* ΓöÇΓöÇ Arabic Text ΓöÇΓöÇ */
+  .title-ar {
+    font-family: 'Noto Sans Arabic', 'Amiri', serif;
+    font-size: 3.6mm;
+    font-weight: 450;
+    color: #2a1f18;
+    line-height: 1.95;
+    margin: 7mm 0 5mm;
+    max-width: 86%;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .title-ar .highlight {
+    background: linear-gradient(135deg, #d4af37, #c8a84e, #b8962e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    filter: drop-shadow(0 1px 2px rgba(180,150,40,0.12));
+  }
+
+  /* ΓöÇΓöÇ Bottom Quote ΓöÇΓöÇ */
+  .bottom-quote {
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+    font-size: 5.5mm;
+    font-style: italic;
+    color: #7a6a5a;
+    letter-spacing: 1.8px;
+    margin-top: 8mm;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .bottom-quote::before {
+    content: '\201C';
+    font-size: 12mm;
+    color: #d4af37;
+    opacity: 0.2;
+    margin-left: 2mm;
+    vertical-align: middle;
+    font-style: normal;
+    line-height: 0;
+  }
+  .bottom-quote::after {
+    content: '\201D';
+    font-size: 12mm;
+    color: #d4af37;
+    opacity: 0.2;
+    margin-right: 2mm;
+    vertical-align: bottom;
+    font-style: normal;
+    line-height: 0;
+  }
+
+  /* ΓöÇΓöÇ Gold Emblem Watermark ΓöÇΓöÇ */
+  .gold-emblem {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95mm;
+    height: 95mm;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.06;
+  }
+  .gold-emblem svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 8px rgba(212,175,55,0.12));
+  }
+
+  /* ΓöÇΓöÇ Balloons ΓöÇΓöÇ */
+  .balloon-group {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .balloon-group svg { width: 100%; height: 100%; }
+  .balloon-1 { top: 24mm; right: 30mm; width: 28mm; height: 50mm; opacity: 0.65; }
+  .balloon-2 { top: 18mm; right: 56mm; width: 22mm; height: 40mm; opacity: 0.5; }
+  .balloon-3 { top: 30mm; right: 44mm; width: 18mm; height: 32mm; opacity: 0.4; }
+
+  /* ΓöÇΓöÇ Flowers ΓöÇΓöÇ */
+  .flower {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .flower svg { width: 100%; height: 100%; overflow: visible; }
+  .flower-1 { top: 16mm; left: 10mm; width: 60mm; height: 60mm; opacity: 0.55; }
+  .flower-2 { top: 8mm; right: 5mm; width: 75mm; height: 75mm; opacity: 0.4; }
+  .flower-3 { bottom: 12mm; left: 8mm; width: 65mm; height: 65mm; opacity: 0.45; }
+  .flower-4 { bottom: 6mm; right: 8mm; width: 70mm; height: 70mm; opacity: 0.5; }
+  .flower-5 { top: 65mm; left: -8mm; width: 50mm; height: 50mm; opacity: 0.3; }
+  .flower-6 { bottom: 65mm; right: -8mm; width: 55mm; height: 55mm; opacity: 0.25; }
+
+  /* ΓöÇΓöÇ Cake ΓöÇΓöÇ */
+  .cake-container {
+    position: absolute;
+    bottom: 58mm;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 3;
+    pointer-events: none;
+    width: 42mm;
+    height: 42mm;
+    opacity: 0.12;
+  }
+  .cake-container svg { width: 100%; height: 100%; }
+
+  /* ΓöÇΓöÇ Stars ΓöÇΓöÇ */
+  .star {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+  .star svg { width: 100%; height: 100%; overflow: visible; }
+  .star-1 { top: 42mm; left: 28mm; width: 7mm; height: 7mm; }
+  .star-2 { top: 52mm; right: 32mm; width: 5mm; height: 5mm; }
+  .star-3 { top: 105mm; left: 22mm; width: 5.5mm; height: 5.5mm; }
+  .star-4 { bottom: 125mm; right: 25mm; width: 8mm; height: 8mm; }
+  .star-5 { bottom: 95mm; left: 32mm; width: 4mm; height: 4mm; }
+  .star-6 { top: 68mm; right: 50%; width: 4.5mm; height: 4.5mm; opacity: 0.35; }
+
+  /* ΓöÇΓöÇ Floating Particles ΓöÇΓöÇ */
+  .particles {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .particles svg { width: 100%; height: 100%; }
+
+  /* ΓöÇΓöÇ Mobile Responsive ΓöÇΓöÇ */
   @media screen and (max-width: 850px) {
-    .card-wrapper { padding: 12px; align-items: flex-start; padding-top: 12px; }
+    .card-wrapper { padding: 8px; align-items: flex-start; padding-top: 16px; }
   }
   @media screen and (max-width: 500px) {
-    .card-wrapper { padding: 6px; padding-top: 8px; }
-    .glass-panel { width: 54%; padding: 4% 5%; }
-    .glass-panel .arabic-text { font-size: 1.6%; line-height: 1.6; }
-    .top-text .sub { font-size: 1.5%; }
-    .bottom-text .quote { font-size: 1.8%; width: 55%; }
+    .card-wrapper { padding: 4px; padding-top: 10px; }
   }
 
+  /* ΓöÇΓöÇ Print ΓöÇΓöÇ */
   @media print {
     body { background: white; margin: 0; }
     body::before { display: none; }
     .card-wrapper { display: block; padding: 0; min-height: auto; }
-    .card { box-shadow: none; margin: 0 auto; max-width: 100%; }
+    .card-wrapper::after { display: none; }
+    .card { box-shadow: none; margin: 0 auto; }
   }
 </style>
 </head>
@@ -325,399 +402,626 @@
 <div class="card-wrapper">
 <div class="card">
 
-  <!-- Background layers -->
-  <div class="marble-bg"></div>
-
-  <div class="marble-veins">
-    <svg viewBox="0 0 2100 2970" preserveAspectRatio="none">
-      <defs>
-        <filter id="marble-noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.007" numOctaves="6" seed="42" result="noise"/>
-          <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
-          <feComponentTransfer in="grayNoise" result="softNoise">
-            <feFuncR type="linear" slope="0.45" intercept="0.28"/>
-            <feFuncG type="linear" slope="0.45" intercept="0.28"/>
-            <feFuncB type="linear" slope="0.45" intercept="0.28"/>
-          </feComponentTransfer>
-          <feBlend in="SourceGraphic" in2="softNoise" mode="soft-light"/>
-        </filter>
-        <filter id="emboss-shadow">
-          <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.08"/>
-          <feDropShadow dx="0" dy="-0.5" stdDeviation="0.5" flood-color="#fff" flood-opacity="0.25"/>
-        </filter>
-        <linearGradient id="gold-metallic" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#f5e6a3"/>
-          <stop offset="20%" stop-color="#d4af37"/>
-          <stop offset="40%" stop-color="#fff8dc"/>
-          <stop offset="55%" stop-color="#c8a84e"/>
-          <stop offset="75%" stop-color="#f5e6a3"/>
-          <stop offset="100%" stop-color="#b8860b"/>
-        </linearGradient>
-        <linearGradient id="gold-vein" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#d4af37" stop-opacity="0.5"/>
-          <stop offset="30%" stop-color="#f5e6a3" stop-opacity="0.25"/>
-          <stop offset="60%" stop-color="#c8a84e" stop-opacity="0.35"/>
-          <stop offset="100%" stop-color="#b8860b" stop-opacity="0.25"/>
-        </linearGradient>
-      </defs>
-      <path d="M0,500 Q400,450 700,600 T1200,550 T1800,700 T2100,600" stroke="url(#gold-vein)" stroke-width="3" fill="none" opacity="0.4"/>
-      <path d="M0,1000 Q500,950 900,1100 T1500,1050 T2100,1200" stroke="url(#gold-vein)" stroke-width="2" fill="none" opacity="0.3"/>
-      <path d="M0,1500 Q450,1450 800,1600 T1400,1550 T1900,1700 T2100,1600" stroke="url(#gold-vein)" stroke-width="2.5" fill="none" opacity="0.25"/>
-      <path d="M0,2000 Q350,1950 650,2100 T1200,2050 T1700,2200 T2100,2100" stroke="url(#gold-vein)" stroke-width="1.5" fill="none" opacity="0.3"/>
-      <path d="M0,2500 Q500,2450 850,2600 T1450,2550 T2100,2650" stroke="url(#gold-vein)" stroke-width="2" fill="none" opacity="0.2"/>
-      <path d="M400,0 Q450,600 500,1200 T600,2400 T650,2970" stroke="url(#gold-vein)" stroke-width="1.5" fill="none" opacity="0.18"/>
-      <path d="M1200,0 Q1250,500 1300,1000 T1400,2200 T1450,2970" stroke="url(#gold-vein)" stroke-width="1.5" fill="none" opacity="0.15"/>
-      <path d="M1800,0 Q1850,700 1900,1400 T1950,2600 T2000,2970" stroke="url(#gold-vein)" stroke-width="2" fill="none" opacity="0.2"/>
-    </svg>
+  <!-- Marble Background -->
+  <div class="marble-bg">
+    <div class="marble-veins">
+      <svg viewBox="0 0 2100 2970" preserveAspectRatio="none">
+        <defs>
+          <filter id="marble-noise" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="6" seed="42" result="noise"/>
+            <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+            <feComponentTransfer in="grayNoise" result="softNoise">
+              <feFuncR type="linear" slope="0.4" intercept="0.3"/>
+              <feFuncG type="linear" slope="0.4" intercept="0.3"/>
+              <feFuncB type="linear" slope="0.4" intercept="0.3"/>
+            </feComponentTransfer>
+            <feBlend in="SourceGraphic" in2="softNoise" mode="soft-light"/>
+          </filter>
+          <filter id="gold-foil">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="7" result="noise"/>
+            <feColorMatrix type="matrix" values="1.2 0 0 0 0.3 0 1.0 0 0 0.15 0 0.6 0 0 0 0 0 0 0.6 0" in="noise" result="goldSpec"/>
+            <feComposite in="SourceGraphic" in2="goldSpec" operator="in" result="goldTex"/>
+            <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="goldTex"/></feMerge>
+          </filter>
+          <filter id="emboss-shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.08"/>
+            <feDropShadow dx="0" dy="-0.5" stdDeviation="0.5" flood-color="#fff" flood-opacity="0.25"/>
+          </filter>
+          <linearGradient id="gold-vein" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d4af37" stop-opacity="0.5"/>
+            <stop offset="30%" stop-color="#f5e6a3" stop-opacity="0.3"/>
+            <stop offset="60%" stop-color="#c8a84e" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#b8860b" stop-opacity="0.3"/>
+          </linearGradient>
+          <linearGradient id="gold-metallic" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f5e6a3"/>
+            <stop offset="15%" stop-color="#e8c84a"/>
+            <stop offset="25%" stop-color="#d4af37"/>
+            <stop offset="38%" stop-color="#fff8dc"/>
+            <stop offset="50%" stop-color="#c8a84e"/>
+            <stop offset="65%" stop-color="#f5e6a3"/>
+            <stop offset="80%" stop-color="#d4af37"/>
+            <stop offset="100%" stop-color="#b8860b"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,400 Q300,350 500,500 T1000,450 T1500,600 T2100,500" stroke="url(#gold-vein)" stroke-width="3" fill="none" opacity="0.4"/>
+        <path d="M0,800 Q400,750 700,900 T1200,850 T1800,1000 T2100,900" stroke="url(#gold-vein)" stroke-width="2.5" fill="none" opacity="0.35"/>
+        <path d="M0,1200 Q500,1150 800,1300 T1400,1250 T1900,1400 T2100,1300" stroke="url(#gold-vein)" stroke-width="2" fill="none" opacity="0.3"/>
+        <path d="M0,1600 Q350,1550 600,1700 T1100,1650 T1600,1800 T2100,1700" stroke="url(#gold-vein)" stroke-width="1.5" fill="none" opacity="0.35"/>
+        <path d="M0,2000 Q450,1950 750,2100 T1250,2050 T1750,2200 T2100,2100" stroke="url(#gold-vein)" stroke-width="2" fill="none" opacity="0.25"/>
+        <path d="M0,2400 Q300,2350 550,2500 T1000,2450 T1500,2600 T2100,2500" stroke="url(#gold-vein)" stroke-width="1.5" fill="none" opacity="0.2"/>
+        <path d="M500,0 Q550,500 600,1000 T700,2000 T800,2970" stroke="url(#gold-vein)" stroke-width="2" fill="none" opacity="0.2"/>
+        <path d="M1200,0 Q1250,400 1300,800 T1400,1800 T1450,2970" stroke="url(#gold-vein)" stroke-width="1.5" fill="none" opacity="0.15"/>
+        <path d="M1700,0 Q1750,600 1800,1200 T1850,2400 T1900,2970" stroke="url(#gold-vein)" stroke-width="2" fill="none" opacity="0.18"/>
+      </svg>
+    </div>
   </div>
 
+  <!-- Paper Grain -->
   <div class="paper-grain">
     <svg viewBox="0 0 2100 2970" preserveAspectRatio="none">
-      <filter id="grain">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="5" seed="1"/>
-        <feColorMatrix type="saturate" values="0"/>
-        <feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer>
-      </filter>
-      <rect x="0" y="0" width="2100" height="2970" filter="url(#grain)" fill="none"/>
+      <defs>
+        <filter id="paper-grain-filter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="5" seed="1"/>
+          <feColorMatrix type="saturate" values="0"/>
+          <feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer>
+        </filter>
+      </defs>
+      <rect x="0" y="0" width="2100" height="2970" filter="url(#paper-grain-filter)" fill="none"/>
     </svg>
   </div>
 
+  <!-- Cinematic Glow -->
   <div class="glow-overlay"></div>
 
-  <div class="bokeh">
-    <svg viewBox="0 0 2100 2970">
-      <circle cx="350" cy="250" r="18" fill="none" stroke="rgba(212,175,55,0.06)" stroke-width="1.5">
-        <animate attributeName="opacity" values="0.06;0.01;0.06" dur="4s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="1700" cy="350" r="25" fill="none" stroke="rgba(212,175,55,0.05)" stroke-width="1">
-        <animate attributeName="opacity" values="0.05;0.01;0.05" dur="5s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="250" cy="1800" r="12" fill="none" stroke="rgba(245,230,163,0.04)" stroke-width="2">
-        <animate attributeName="opacity" values="0.04;0.005;0.04" dur="3.5s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="1850" cy="2200" r="20" fill="none" stroke="rgba(212,175,55,0.04)" stroke-width="1.5">
-        <animate attributeName="opacity" values="0.04;0.008;0.04" dur="4.5s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="400" cy="800" r="8" fill="rgba(255,248,220,0.03)"/>
-      <circle cx="1600" cy="600" r="10" fill="rgba(255,248,220,0.025)"/>
-      <circle cx="1800" cy="1400" r="6" fill="rgba(255,248,220,0.02)"/>
-      <circle cx="300" cy="1200" r="7" fill="rgba(255,248,220,0.02)"/>
-      <circle cx="1000" cy="400" r="4" fill="rgba(255,248,220,0.03)"/>
-      <circle cx="1200" cy="2500" r="5" fill="rgba(255,248,220,0.02)"/>
+  <!-- Gold Emblem Watermark -->
+  <div class="gold-emblem">
+    <svg viewBox="0 0 100 100" filter="url(#emboss-shadow)">
+      <circle cx="50" cy="50" r="48" fill="none" stroke="url(#gold-metallic)" stroke-width="0.6" opacity="0.7"/>
+      <circle cx="50" cy="50" r="42" fill="none" stroke="url(#gold-metallic)" stroke-width="0.4" opacity="0.5"/>
+      <path d="M50,5 Q60,20 75,25 Q60,30 50,45 Q40,30 25,25 Q40,20 50,5Z" fill="url(#gold-metallic)" opacity="0.5"/>
+      <path d="M50,55 Q60,70 75,75 Q60,80 50,95 Q40,80 25,75 Q40,70 50,55Z" fill="url(#gold-metallic)" opacity="0.5"/>
+      <path d="M5,50 Q20,40 25,25 Q30,40 45,50 Q30,60 25,75 Q20,60 5,50Z" fill="url(#gold-metallic)" opacity="0.5"/>
+      <path d="M55,50 Q70,40 75,25 Q80,40 95,50 Q80,60 75,75 Q70,60 55,50Z" fill="url(#gold-metallic)" opacity="0.5"/>
     </svg>
   </div>
 
-  <div class="emblem">
-    <svg viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="48" fill="none" stroke="url(#gold-metallic)" stroke-width="0.5" opacity="0.7"/>
-      <circle cx="50" cy="50" r="42" fill="none" stroke="url(#gold-metallic)" stroke-width="0.3" opacity="0.5"/>
-      <path d="M50,8 Q58,22 72,26 Q58,32 50,45 Q42,32 28,26 Q42,22 50,8Z" fill="url(#gold-metallic)" opacity="0.5"/>
-      <path d="M50,55 Q58,68 72,74 Q58,80 50,92 Q42,80 28,74 Q42,68 50,55Z" fill="url(#gold-metallic)" opacity="0.5"/>
-      <path d="M8,50 Q22,42 28,28 Q32,42 45,50 Q32,58 28,72 Q22,58 8,50Z" fill="url(#gold-metallic)" opacity="0.5"/>
-      <path d="M55,50 Q68,42 72,28 Q78,42 92,50 Q78,58 72,72 Q68,58 55,50Z" fill="url(#gold-metallic)" opacity="0.5"/>
-    </svg>
-  </div>
-
+  <!-- Gold Borders -->
   <div class="gold-border-outer"></div>
   <div class="gold-border-inner"></div>
 
+  <!-- Filigree Corner Decorations -->
   <div class="corner corner-tl">
     <svg viewBox="0 0 120 120">
-      <path d="M2,2 L75,2 Q95,2 100,12 Q105,22 92,28 Q80,34 86,46 Q90,55 80,62" stroke="url(#gold-metallic)" stroke-width="2" fill="none" filter="url(#emboss-shadow)"/>
-      <path d="M2,12 L55,12 Q68,12 72,20 Q64,25 56,28 Q48,32 52,42 Q55,48 48,52" stroke="url(#gold-metallic)" stroke-width="0.8" fill="none" opacity="0.45"/>
-      <circle cx="88" cy="10" r="3" fill="url(#gold-metallic)" opacity="0.55" filter="url(#emboss-shadow)"/>
-      <circle cx="96" cy="20" r="1.8" fill="url(#gold-metallic)" opacity="0.35"/>
+      <path d="M2,2 L85,2 Q105,2 110,15 Q115,28 100,35 Q88,40 95,52 Q100,60 90,68" stroke="url(#gold-metallic)" stroke-width="2" fill="none" filter="url(#emboss-shadow)"/>
+      <path d="M2,14 L60,14 Q75,14 80,25 Q70,30 60,32 Q50,35 55,48 Q58,55 50,58" stroke="url(#gold-metallic)" stroke-width="1" fill="none" opacity="0.5"/>
+      <circle cx="95" cy="12" r="3.5" fill="url(#gold-metallic)" opacity="0.6" filter="url(#emboss-shadow)"/>
+      <circle cx="104" cy="24" r="2" fill="url(#gold-metallic)" opacity="0.4"/>
+      <path d="M110,8 Q115,12 112,18" stroke="url(#gold-metallic)" stroke-width="1.2" fill="none" opacity="0.4"/>
+      <path d="M2,40 Q15,38 20,45 Q22,50 18,55" stroke="url(#gold-metallic)" stroke-width="0.8" fill="none" opacity="0.35"/>
     </svg>
   </div>
   <div class="corner corner-tr">
     <svg viewBox="0 0 120 120">
-      <path d="M118,2 L45,2 Q25,2 20,12 Q15,22 28,28 Q40,34 34,46 Q30,55 40,62" stroke="url(#gold-metallic)" stroke-width="2" fill="none" filter="url(#emboss-shadow)"/>
-      <path d="M118,12 L65,12 Q52,12 48,20 Q56,25 64,28 Q72,32 68,42 Q65,48 72,52" stroke="url(#gold-metallic)" stroke-width="0.8" fill="none" opacity="0.45"/>
-      <circle cx="32" cy="10" r="3" fill="url(#gold-metallic)" opacity="0.55" filter="url(#emboss-shadow)"/>
-      <circle cx="24" cy="20" r="1.8" fill="url(#gold-metallic)" opacity="0.35"/>
+      <path d="M118,2 L35,2 Q15,2 10,15 Q5,28 20,35 Q32,40 25,52 Q20,60 30,68" stroke="url(#gold-metallic)" stroke-width="2" fill="none" filter="url(#emboss-shadow)"/>
+      <path d="M118,14 L60,14 Q45,14 40,25 Q50,30 60,32 Q70,35 65,48 Q62,55 70,58" stroke="url(#gold-metallic)" stroke-width="1" fill="none" opacity="0.5"/>
+      <circle cx="25" cy="12" r="3.5" fill="url(#gold-metallic)" opacity="0.6" filter="url(#emboss-shadow)"/>
+      <circle cx="16" cy="24" r="2" fill="url(#gold-metallic)" opacity="0.4"/>
+      <path d="M10,8 Q5,12 8,18" stroke="url(#gold-metallic)" stroke-width="1.2" fill="none" opacity="0.4"/>
+      <path d="M118,40 Q105,38 100,45 Q98,50 102,55" stroke="url(#gold-metallic)" stroke-width="0.8" fill="none" opacity="0.35"/>
     </svg>
   </div>
   <div class="corner corner-bl">
     <svg viewBox="0 0 120 120">
-      <path d="M2,118 L75,118 Q95,118 100,108 Q105,98 92,92 Q80,86 86,74 Q90,65 80,58" stroke="url(#gold-metallic)" stroke-width="2" fill="none" filter="url(#emboss-shadow)"/>
-      <path d="M2,108 L55,108 Q68,108 72,100 Q64,95 56,92 Q48,88 52,78 Q55,72 48,68" stroke="url(#gold-metallic)" stroke-width="0.8" fill="none" opacity="0.45"/>
-      <circle cx="88" cy="110" r="3" fill="url(#gold-metallic)" opacity="0.55" filter="url(#emboss-shadow)"/>
-      <circle cx="96" cy="100" r="1.8" fill="url(#gold-metallic)" opacity="0.35"/>
+      <path d="M2,118 L85,118 Q105,118 110,105 Q115,92 100,85 Q88,80 95,68 Q100,60 90,52" stroke="url(#gold-metallic)" stroke-width="2" fill="none" filter="url(#emboss-shadow)"/>
+      <path d="M2,106 L60,106 Q75,106 80,95 Q70,90 60,88 Q50,85 55,72 Q58,65 50,62" stroke="url(#gold-metallic)" stroke-width="1" fill="none" opacity="0.5"/>
+      <circle cx="95" cy="108" r="3.5" fill="url(#gold-metallic)" opacity="0.6" filter="url(#emboss-shadow)"/>
+      <circle cx="104" cy="96" r="2" fill="url(#gold-metallic)" opacity="0.4"/>
+      <path d="M2,80 Q15,82 20,75 Q22,70 18,65" stroke="url(#gold-metallic)" stroke-width="0.8" fill="none" opacity="0.35"/>
     </svg>
   </div>
   <div class="corner corner-br">
     <svg viewBox="0 0 120 120">
-      <path d="M118,118 L45,118 Q25,118 20,108 Q15,98 28,92 Q40,86 34,74 Q30,65 40,58" stroke="url(#gold-metallic)" stroke-width="2" fill="none" filter="url(#emboss-shadow)"/>
-      <path d="M118,108 L65,108 Q52,108 48,100 Q56,95 64,92 Q72,88 68,78 Q65,72 72,68" stroke="url(#gold-metallic)" stroke-width="0.8" fill="none" opacity="0.45"/>
-      <circle cx="32" cy="110" r="3" fill="url(#gold-metallic)" opacity="0.55" filter="url(#emboss-shadow)"/>
-      <circle cx="24" cy="100" r="1.8" fill="url(#gold-metallic)" opacity="0.35"/>
+      <path d="M118,118 L35,118 Q15,118 10,105 Q5,92 20,85 Q32,80 25,68 Q20,60 30,52" stroke="url(#gold-metallic)" stroke-width="2" fill="none" filter="url(#emboss-shadow)"/>
+      <path d="M118,106 L60,106 Q45,106 40,95 Q50,90 60,88 Q70,85 65,72 Q62,65 70,62" stroke="url(#gold-metallic)" stroke-width="1" fill="none" opacity="0.5"/>
+      <circle cx="25" cy="108" r="3.5" fill="url(#gold-metallic)" opacity="0.6" filter="url(#emboss-shadow)"/>
+      <circle cx="16" cy="96" r="2" fill="url(#gold-metallic)" opacity="0.4"/>
+      <path d="M118,80 Q105,82 100,75 Q98,70 102,65" stroke="url(#gold-metallic)" stroke-width="0.8" fill="none" opacity="0.35"/>
     </svg>
   </div>
 
+  <!-- Ribbon -->
   <div class="ribbon ribbon-top">
-    <svg viewBox="0 0 2100 60" preserveAspectRatio="none">
+    <svg viewBox="0 0 2100 80" preserveAspectRatio="none">
       <defs>
         <linearGradient id="ribbon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stop-color="#d4af37" stop-opacity="0"/>
-          <stop offset="15%" stop-color="#c8a84e" stop-opacity="0.1"/>
-          <stop offset="35%" stop-color="#f5e6a3" stop-opacity="0.25"/>
-          <stop offset="50%" stop-color="#fff8dc" stop-opacity="0.35"/>
-          <stop offset="65%" stop-color="#f5e6a3" stop-opacity="0.25"/>
-          <stop offset="85%" stop-color="#c8a84e" stop-opacity="0.1"/>
+          <stop offset="15%" stop-color="#c8a84e" stop-opacity="0.12"/>
+          <stop offset="35%" stop-color="#f5e6a3" stop-opacity="0.3"/>
+          <stop offset="50%" stop-color="#fff8dc" stop-opacity="0.4"/>
+          <stop offset="65%" stop-color="#f5e6a3" stop-opacity="0.3"/>
+          <stop offset="85%" stop-color="#c8a84e" stop-opacity="0.12"/>
           <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
         </linearGradient>
       </defs>
-      <rect x="0" y="0" width="2100" height="60" fill="url(#ribbon-grad)"/>
-      <line x1="0" y1="30" x2="2100" y2="30" stroke="#d4af37" stroke-width="0.5" opacity="0.15"/>
+      <rect x="0" y="0" width="2100" height="80" fill="url(#ribbon-grad)"/>
+      <line x1="0" y1="38" x2="2100" y2="38" stroke="#d4af37" stroke-width="0.6" opacity="0.2"/>
+      <line x1="0" y1="42" x2="2100" y2="42" stroke="#d4af37" stroke-width="0.6" opacity="0.2"/>
     </svg>
   </div>
   <div class="ribbon ribbon-bottom">
-    <svg viewBox="0 0 2100 60" preserveAspectRatio="none">
-      <rect x="0" y="0" width="2100" height="60" fill="url(#ribbon-grad)"/>
-      <line x1="0" y1="30" x2="2100" y2="30" stroke="#d4af37" stroke-width="0.5" opacity="0.15"/>
+    <svg viewBox="0 0 2100 80" preserveAspectRatio="none">
+      <rect x="0" y="0" width="2100" height="80" fill="url(#ribbon-grad)"/>
+      <line x1="0" y1="38" x2="2100" y2="38" stroke="#d4af37" stroke-width="0.6" opacity="0.2"/>
+      <line x1="0" y1="42" x2="2100" y2="42" stroke="#d4af37" stroke-width="0.6" opacity="0.2"/>
     </svg>
   </div>
 
-  <!-- Flowers: Top-Left -->
-  <div class="flower flower-tl">
+  <!-- Balloons -->
+  <div class="balloon-group balloon-1">
+    <svg viewBox="0 0 28 50">
+      <defs>
+        <radialGradient id="balloon-gold" cx="35%" cy="25%" r="65%">
+          <stop offset="0%" stop-color="#fff8dc"/>
+          <stop offset="25%" stop-color="#f5e6a3"/>
+          <stop offset="60%" stop-color="#d4af37"/>
+          <stop offset="100%" stop-color="#b8860b"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="14" cy="20" rx="12" ry="16" fill="url(#balloon-gold)" opacity="0.75" filter="url(#emboss-shadow)"/>
+      <path d="M14,36 L13,42 L15,42 Z" fill="#b8860b" opacity="0.5"/>
+      <line x1="14" y1="42" x2="12" y2="50" stroke="#b8860b" stroke-width="0.5" opacity="0.3"/>
+      <ellipse cx="10" cy="15" rx="3" ry="5" fill="white" opacity="0.35"/>
+      <path d="M14,4 Q18,12 14,20" stroke="white" stroke-width="0.8" fill="none" opacity="0.12"/>
+    </svg>
+  </div>
+  <div class="balloon-group balloon-2">
+    <svg viewBox="0 0 22 40">
+      <defs>
+        <radialGradient id="balloon-rose" cx="35%" cy="25%" r="65%">
+          <stop offset="0%" stop-color="#fff5f5"/>
+          <stop offset="30%" stop-color="#fce4ec"/>
+          <stop offset="60%" stop-color="#f8bbd0"/>
+          <stop offset="100%" stop-color="#e8a0b4"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="11" cy="16" rx="10" ry="13" fill="url(#balloon-rose)" opacity="0.55"/>
+      <path d="M11,29 L10,34 L12,34 Z" fill="#d4af37" opacity="0.45"/>
+      <line x1="11" y1="34" x2="10" y2="40" stroke="#d4af37" stroke-width="0.5" opacity="0.25"/>
+      <ellipse cx="8" cy="12" rx="2" ry="3" fill="white" opacity="0.25"/>
+    </svg>
+  </div>
+  <div class="balloon-group balloon-3">
+    <svg viewBox="0 0 18 32">
+      <defs>
+        <radialGradient id="balloon-ivory" cx="35%" cy="25%" r="65%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="30%" stop-color="#fff8e7"/>
+          <stop offset="60%" stop-color="#f5e6ca"/>
+          <stop offset="100%" stop-color="#e8d5b0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="9" cy="13" rx="8" ry="10" fill="url(#balloon-ivory)" opacity="0.45"/>
+      <path d="M9,23 L8,27 L10,27 Z" fill="#d4af37" opacity="0.35"/>
+      <line x1="9" y1="27" x2="8" y2="32" stroke="#d4af37" stroke-width="0.5" opacity="0.2"/>
+      <ellipse cx="7" cy="10" rx="1.5" ry="2.5" fill="white" opacity="0.2"/>
+    </svg>
+  </div>
+
+  <!-- Detailed Flowers -->
+  <!-- Flower 1: Large Rose (top left) -->
+  <div class="flower flower-1">
     <svg viewBox="0 0 100 100">
       <defs>
-        <radialGradient id="rose-lt" cx="45%" cy="40%" r="55%">
+        <radialGradient id="rose-base" cx="45%" cy="40%" r="55%">
           <stop offset="0%" stop-color="#ffffff"/>
           <stop offset="30%" stop-color="#fefcf9"/>
           <stop offset="60%" stop-color="#f8f4ee"/>
           <stop offset="85%" stop-color="#f0e8de"/>
           <stop offset="100%" stop-color="#e8dccc"/>
         </radialGradient>
-        <radialGradient id="peony-lt" cx="45%" cy="40%" r="55%">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="40%" stop-color="#fdfcf8"/>
-          <stop offset="70%" stop-color="#f5efe6"/>
-          <stop offset="100%" stop-color="#ece0d0"/>
+        <radialGradient id="rose-outer" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#faf6f0"/>
+          <stop offset="50%" stop-color="#f0e8dc"/>
+          <stop offset="100%" stop-color="#e0d0bc"/>
         </radialGradient>
-        <radialGradient id="rose-gold" cx="50%" cy="50%" r="50%">
+        <radialGradient id="rose-center-gold" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stop-color="#f5e6a3"/>
           <stop offset="60%" stop-color="#d4af37"/>
           <stop offset="100%" stop-color="#b8860b"/>
         </radialGradient>
       </defs>
-      <ellipse cx="38" cy="40" rx="18" ry="22" fill="url(#rose-lt)" transform="rotate(-50,38,40)" opacity="0.5"/>
-      <ellipse cx="38" cy="40" rx="18" ry="22" fill="url(#rose-lt)" transform="rotate(-10,38,40)" opacity="0.5"/>
-      <ellipse cx="38" cy="40" rx="18" ry="22" fill="url(#rose-lt)" transform="rotate(30,38,40)" opacity="0.5"/>
-      <ellipse cx="38" cy="40" rx="18" ry="22" fill="url(#rose-lt)" transform="rotate(70,38,40)" opacity="0.5"/>
-      <ellipse cx="38" cy="40" rx="18" ry="22" fill="url(#rose-lt)" transform="rotate(110,38,40)" opacity="0.5"/>
-      <ellipse cx="38" cy="40" rx="12" ry="15" fill="url(#rose-lt)" transform="rotate(-25,38,40)" opacity="0.65"/>
-      <ellipse cx="38" cy="40" rx="12" ry="15" fill="url(#rose-lt)" transform="rotate(35,38,40)" opacity="0.65"/>
-      <ellipse cx="38" cy="40" rx="12" ry="15" fill="url(#rose-lt)" transform="rotate(95,38,40)" opacity="0.65"/>
-      <ellipse cx="38" cy="40" rx="7" ry="9" fill="url(#rose-lt)" transform="rotate(10,38,40)" opacity="0.8"/>
-      <ellipse cx="38" cy="40" rx="7" ry="9" fill="url(#rose-lt)" transform="rotate(70,38,40)" opacity="0.8"/>
-      <path d="M36,38 Q38,35 40,38 Q42,40 39,42 Q37,44 35,42 Q34,40 36,38" fill="none" stroke="url(#rose-gold)" stroke-width="0.4" opacity="0.4"/>
-      <circle cx="38" cy="39" r="2" fill="url(#rose-gold)" opacity="0.35"/>
-      <ellipse cx="35" cy="36" rx="3" ry="2" fill="white" opacity="0.12" transform="rotate(-15,35,36)"/>
-      <ellipse cx="68" cy="52" rx="20" ry="24" fill="url(#peony-lt)" transform="rotate(-40,68,52)" opacity="0.35"/>
-      <ellipse cx="68" cy="52" rx="20" ry="24" fill="url(#peony-lt)" transform="rotate(20,68,52)" opacity="0.35"/>
-      <ellipse cx="68" cy="52" rx="20" ry="24" fill="url(#peony-lt)" transform="rotate(80,68,52)" opacity="0.35"/>
-      <ellipse cx="68" cy="52" rx="20" ry="24" fill="url(#peony-lt)" transform="rotate(140,68,52)" opacity="0.35"/>
-      <ellipse cx="68" cy="52" rx="14" ry="18" fill="url(#peony-lt)" transform="rotate(-10,68,52)" opacity="0.5"/>
-      <ellipse cx="68" cy="52" rx="14" ry="18" fill="url(#peony-lt)" transform="rotate(50,68,52)" opacity="0.5"/>
-      <ellipse cx="68" cy="52" rx="14" ry="18" fill="url(#peony-lt)" transform="rotate(110,68,52)" opacity="0.5"/>
-      <ellipse cx="68" cy="52" rx="9" ry="12" fill="url(#peony-lt)" transform="rotate(20,68,52)" opacity="0.6"/>
-      <ellipse cx="68" cy="52" rx="9" ry="12" fill="url(#peony-lt)" transform="rotate(80,68,52)" opacity="0.6"/>
-      <ellipse cx="68" cy="52" rx="9" ry="12" fill="url(#peony-lt)" transform="rotate(140,68,52)" opacity="0.6"/>
-      <circle cx="68" cy="52" r="4" fill="url(#rose-gold)" opacity="0.3"/>
-      <circle cx="68" cy="52" r="2" fill="#d4af37" opacity="0.2"/>
-      <circle cx="20" cy="52" r="2.5" fill="white" opacity="0.4"/>
-      <circle cx="16" cy="48" r="2" fill="white" opacity="0.35"/>
-      <circle cx="24" cy="55" r="1.5" fill="white" opacity="0.3"/>
-      <circle cx="55" cy="28" r="2" fill="white" opacity="0.35"/>
-      <circle cx="60" cy="24" r="1.5" fill="white" opacity="0.3"/>
-      <circle cx="50" cy="68" r="2" fill="white" opacity="0.3"/>
-      <line x1="20" y1="52" x2="16" y2="60" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
-      <line x1="55" y1="28" x2="50" y2="22" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
-      <line x1="50" y1="68" x2="46" y2="74" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
-      <ellipse cx="26" cy="62" rx="10" ry="4" fill="#c8d6b0" opacity="0.3" transform="rotate(-30,26,62)"/>
-      <ellipse cx="52" cy="74" rx="8" ry="3.5" fill="#c8d6b0" opacity="0.25" transform="rotate(20,52,74)"/>
-      <ellipse cx="78" cy="68" rx="9" ry="3.5" fill="#c8d6b0" opacity="0.25" transform="rotate(40,78,68)"/>
-      <ellipse cx="60" cy="20" rx="7" ry="3" fill="#c8d6b0" opacity="0.2" transform="rotate(-15,60,20)"/>
+      <!-- Outer guard petals -->
+      <ellipse cx="50" cy="48" rx="24" ry="28" fill="url(#rose-outer)" transform="rotate(-45,50,48)" opacity="0.3"/>
+      <ellipse cx="50" cy="48" rx="24" ry="28" fill="url(#rose-outer)" transform="rotate(45,50,48)" opacity="0.3"/>
+      <!-- Mid petals -->
+      <ellipse cx="50" cy="48" rx="18" ry="22" fill="url(#rose-base)" transform="rotate(-75,50,48)" opacity="0.55"/>
+      <ellipse cx="50" cy="48" rx="18" ry="22" fill="url(#rose-base)" transform="rotate(-30,50,48)" opacity="0.55"/>
+      <ellipse cx="50" cy="48" rx="18" ry="22" fill="url(#rose-base)" transform="rotate(15,50,48)" opacity="0.55"/>
+      <ellipse cx="50" cy="48" rx="18" ry="22" fill="url(#rose-base)" transform="rotate(60,50,48)" opacity="0.55"/>
+      <ellipse cx="50" cy="48" rx="18" ry="22" fill="url(#rose-base)" transform="rotate(105,50,48)" opacity="0.55"/>
+      <!-- Inner petals -->
+      <ellipse cx="50" cy="48" rx="12" ry="15" fill="url(#rose-base)" transform="rotate(-20,50,48)" opacity="0.7"/>
+      <ellipse cx="50" cy="48" rx="12" ry="15" fill="url(#rose-base)" transform="rotate(25,50,48)" opacity="0.7"/>
+      <ellipse cx="50" cy="48" rx="12" ry="15" fill="url(#rose-base)" transform="rotate(70,50,48)" opacity="0.7"/>
+      <ellipse cx="50" cy="48" rx="12" ry="15" fill="url(#rose-base)" transform="rotate(115,50,48)" opacity="0.7"/>
+      <ellipse cx="50" cy="48" rx="12" ry="15" fill="url(#rose-base)" transform="rotate(160,50,48)" opacity="0.7"/>
+      <ellipse cx="50" cy="48" rx="12" ry="15" fill="url(#rose-base)" transform="rotate(-65,50,48)" opacity="0.7"/>
+      <!-- Core -->
+      <ellipse cx="50" cy="48" rx="7" ry="9" fill="url(#rose-base)" transform="rotate(0,50,48)" opacity="0.85"/>
+      <ellipse cx="50" cy="48" rx="7" ry="9" fill="url(#rose-base)" transform="rotate(45,50,48)" opacity="0.85"/>
+      <ellipse cx="50" cy="48" rx="7" ry="9" fill="url(#rose-base)" transform="rotate(90,50,48)" opacity="0.85"/>
+      <ellipse cx="50" cy="48" rx="7" ry="9" fill="url(#rose-base)" transform="rotate(135,50,48)" opacity="0.85"/>
+      <!-- Spiral center -->
+      <path d="M47,46 Q50,42 53,45 Q55,48 52,51 Q49,53 47,50 Q45,48 47,46" fill="none" stroke="url(#rose-center-gold)" stroke-width="0.6" opacity="0.5"/>
+      <circle cx="50" cy="47" r="2.5" fill="url(#rose-center-gold)" opacity="0.4"/>
+      <!-- Light reflection -->
+      <ellipse cx="45" cy="42" rx="4" ry="3" fill="white" opacity="0.15" transform="rotate(-20,45,42)"/>
+      <ellipse cx="52" cy="38" rx="2" ry="1.5" fill="white" opacity="0.1"/>
+      <!-- Leaves -->
+      <ellipse cx="32" cy="62" rx="12" ry="5" fill="#c8d6b0" opacity="0.35" transform="rotate(-25,32,62)"/>
+      <ellipse cx="70" cy="60" rx="10" ry="4" fill="#c8d6b0" opacity="0.3" transform="rotate(20,70,60)"/>
+      <path d="M32,62 L25,68" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
     </svg>
   </div>
 
-  <!-- Flowers: Bottom-Right -->
-  <div class="flower flower-br">
+  <!-- Flower 2: Peony (top right) -->
+  <div class="flower flower-2">
     <svg viewBox="0 0 100 100">
       <defs>
-        <radialGradient id="rose-br" cx="45%" cy="40%" r="55%">
+        <radialGradient id="peony-base" cx="45%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="40%" stop-color="#fdfcf8"/>
+          <stop offset="70%" stop-color="#f5efe6"/>
+          <stop offset="100%" stop-color="#ece0d0"/>
+        </radialGradient>
+        <radialGradient id="peony-inner" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fffefc"/>
+          <stop offset="50%" stop-color="#f8f2ea"/>
+          <stop offset="100%" stop-color="#efe3d4"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="50" cy="45" rx="25" ry="28" fill="url(#peony-base)" transform="rotate(-50,50,45)" opacity="0.35"/>
+      <ellipse cx="50" cy="45" rx="25" ry="28" fill="url(#peony-base)" transform="rotate(-10,50,45)" opacity="0.35"/>
+      <ellipse cx="50" cy="45" rx="25" ry="28" fill="url(#peony-base)" transform="rotate(30,50,45)" opacity="0.35"/>
+      <ellipse cx="50" cy="45" rx="25" ry="28" fill="url(#peony-base)" transform="rotate(70,50,45)" opacity="0.35"/>
+      <ellipse cx="50" cy="45" rx="25" ry="28" fill="url(#peony-base)" transform="rotate(110,50,45)" opacity="0.35"/>
+      <ellipse cx="50" cy="45" rx="18" ry="22" fill="url(#peony-inner)" transform="rotate(-30,50,45)" opacity="0.5"/>
+      <ellipse cx="50" cy="45" rx="18" ry="22" fill="url(#peony-inner)" transform="rotate(20,50,45)" opacity="0.5"/>
+      <ellipse cx="50" cy="45" rx="18" ry="22" fill="url(#peony-inner)" transform="rotate(70,50,45)" opacity="0.5"/>
+      <ellipse cx="50" cy="45" rx="18" ry="22" fill="url(#peony-inner)" transform="rotate(120,50,45)" opacity="0.5"/>
+      <ellipse cx="50" cy="45" rx="12" ry="16" fill="url(#peony-base)" transform="rotate(-15,50,45)" opacity="0.6"/>
+      <ellipse cx="50" cy="45" rx="12" ry="16" fill="url(#peony-base)" transform="rotate(45,50,45)" opacity="0.6"/>
+      <ellipse cx="50" cy="45" rx="12" ry="16" fill="url(#peony-base)" transform="rotate(105,50,45)" opacity="0.6"/>
+      <ellipse cx="50" cy="45" rx="8" ry="10" fill="url(#peony-inner)" transform="rotate(0,50,45)" opacity="0.7"/>
+      <ellipse cx="50" cy="45" rx="8" ry="10" fill="url(#peony-inner)" transform="rotate(60,50,45)" opacity="0.7"/>
+      <ellipse cx="50" cy="45" rx="8" ry="10" fill="url(#peony-inner)" transform="rotate(120,50,45)" opacity="0.7"/>
+      <circle cx="50" cy="45" r="4" fill="#f5e6a3" opacity="0.35"/>
+      <circle cx="50" cy="45" r="2" fill="#d4af37" opacity="0.25"/>
+      <ellipse cx="46" cy="41" rx="3" ry="2" fill="white" opacity="0.12" transform="rotate(-15,46,41)"/>
+      <ellipse cx="30" cy="60" rx="10" ry="4" fill="#c8d6b0" opacity="0.3" transform="rotate(-30,30,60)"/>
+      <ellipse cx="68" cy="58" rx="8" ry="3.5" fill="#c8d6b0" opacity="0.25" transform="rotate(25,68,58)"/>
+    </svg>
+  </div>
+
+  <!-- Flower 3: Rose (bottom left) -->
+  <div class="flower flower-3">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <radialGradient id="rose3-base" cx="45%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="50%" stop-color="#faf6f0"/>
+          <stop offset="80%" stop-color="#f0e8dc"/>
+          <stop offset="100%" stop-color="#e4d6c4"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="50" cy="48" rx="20" ry="24" fill="url(#rose3-base)" transform="rotate(-40,50,48)" opacity="0.45"/>
+      <ellipse cx="50" cy="48" rx="20" ry="24" fill="url(#rose3-base)" transform="rotate(40,50,48)" opacity="0.45"/>
+      <ellipse cx="50" cy="48" rx="20" ry="24" fill="url(#rose3-base)" transform="rotate(100,50,48)" opacity="0.45"/>
+      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(-20,50,48)" opacity="0.6"/>
+      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(30,50,48)" opacity="0.6"/>
+      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(80,50,48)" opacity="0.6"/>
+      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(130,50,48)" opacity="0.6"/>
+      <ellipse cx="50" cy="48" rx="9" ry="12" fill="url(#rose3-base)" transform="rotate(0,50,48)" opacity="0.75"/>
+      <ellipse cx="50" cy="48" rx="9" ry="12" fill="url(#rose3-base)" transform="rotate(60,50,48)" opacity="0.75"/>
+      <ellipse cx="50" cy="48" rx="9" ry="12" fill="url(#rose3-base)" transform="rotate(120,50,48)" opacity="0.75"/>
+      <circle cx="50" cy="48" r="4" fill="#f5e6a3" opacity="0.45"/>
+      <circle cx="50" cy="48" r="2" fill="#d4af37" opacity="0.3"/>
+      <ellipse cx="47" cy="44" rx="2.5" ry="2" fill="white" opacity="0.12"/>
+      <ellipse cx="35" cy="62" rx="10" ry="4" fill="#c8d6b0" opacity="0.3" transform="rotate(-20,35,62)"/>
+      <ellipse cx="65" cy="60" rx="8" ry="3" fill="#c8d6b0" opacity="0.25" transform="rotate(15,65,60)"/>
+    </svg>
+  </div>
+
+  <!-- Flower 4: Peony (bottom right) -->
+  <div class="flower flower-4">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <radialGradient id="peony3-base" cx="45%" cy="40%" r="55%">
           <stop offset="0%" stop-color="#ffffff"/>
           <stop offset="35%" stop-color="#fcf9f5"/>
-          <stop offset="65%" stop-color="#f2ece2"/>
-          <stop offset="100%" stop-color="#e8dccc"/>
-        </radialGradient>
-        <radialGradient id="peony-br" cx="45%" cy="40%" r="55%">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="30%" stop-color="#fdfbf8"/>
-          <stop offset="60%" stop-color="#f4ede4"/>
-          <stop offset="100%" stop-color="#e8dac8"/>
-        </radialGradient>
-        <radialGradient id="rose-gold-br" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#f5e6a3"/>
-          <stop offset="50%" stop-color="#d4af37"/>
-          <stop offset="100%" stop-color="#b8860b"/>
+          <stop offset="65%" stop-color="#f2eae0"/>
+          <stop offset="100%" stop-color="#e6d8c6"/>
         </radialGradient>
       </defs>
-      <ellipse cx="62" cy="40" rx="22" ry="26" fill="url(#peony-br)" transform="rotate(-45,62,40)" opacity="0.35"/>
-      <ellipse cx="62" cy="40" rx="22" ry="26" fill="url(#peony-br)" transform="rotate(15,62,40)" opacity="0.35"/>
-      <ellipse cx="62" cy="40" rx="22" ry="26" fill="url(#peony-br)" transform="rotate(75,62,40)" opacity="0.35"/>
-      <ellipse cx="62" cy="40" rx="22" ry="26" fill="url(#peony-br)" transform="rotate(135,62,40)" opacity="0.35"/>
-      <ellipse cx="62" cy="40" rx="16" ry="20" fill="url(#peony-br)" transform="rotate(-15,62,40)" opacity="0.5"/>
-      <ellipse cx="62" cy="40" rx="16" ry="20" fill="url(#peony-br)" transform="rotate(45,62,40)" opacity="0.5"/>
-      <ellipse cx="62" cy="40" rx="16" ry="20" fill="url(#peony-br)" transform="rotate(105,62,40)" opacity="0.5"/>
-      <ellipse cx="62" cy="40" rx="10" ry="14" fill="url(#peony-br)" transform="rotate(10,62,40)" opacity="0.6"/>
-      <ellipse cx="62" cy="40" rx="10" ry="14" fill="url(#peony-br)" transform="rotate(70,62,40)" opacity="0.6"/>
-      <ellipse cx="62" cy="40" rx="10" ry="14" fill="url(#peony-br)" transform="rotate(130,62,40)" opacity="0.6"/>
-      <circle cx="62" cy="40" r="4.5" fill="url(#rose-gold-br)" opacity="0.3"/>
-      <circle cx="62" cy="40" r="2" fill="#d4af37" opacity="0.2"/>
-      <ellipse cx="32" cy="55" rx="16" ry="20" fill="url(#rose-br)" transform="rotate(-30,32,55)" opacity="0.45"/>
-      <ellipse cx="32" cy="55" rx="16" ry="20" fill="url(#rose-br)" transform="rotate(30,32,55)" opacity="0.45"/>
-      <ellipse cx="32" cy="55" rx="16" ry="20" fill="url(#rose-br)" transform="rotate(90,32,55)" opacity="0.45"/>
-      <ellipse cx="32" cy="55" rx="16" ry="20" fill="url(#rose-br)" transform="rotate(150,32,55)" opacity="0.45"/>
-      <ellipse cx="32" cy="55" rx="10" ry="13" fill="url(#rose-br)" transform="rotate(-10,32,55)" opacity="0.6"/>
-      <ellipse cx="32" cy="55" rx="10" ry="13" fill="url(#rose-br)" transform="rotate(50,32,55)" opacity="0.6"/>
-      <ellipse cx="32" cy="55" rx="10" ry="13" fill="url(#rose-br)" transform="rotate(110,32,55)" opacity="0.6"/>
-      <circle cx="32" cy="55" r="3.5" fill="url(#rose-gold-br)" opacity="0.35"/>
-      <circle cx="32" cy="55" r="1.5" fill="#d4af37" opacity="0.25"/>
-      <ellipse cx="29" cy="51" rx="2.5" ry="1.5" fill="white" opacity="0.1"/>
-      <circle cx="78" cy="26" r="2.5" fill="white" opacity="0.35"/>
-      <circle cx="82" cy="30" r="2" fill="white" opacity="0.3"/>
-      <circle cx="75" cy="22" r="1.5" fill="white" opacity="0.25"/>
-      <circle cx="20" cy="38" r="2" fill="white" opacity="0.3"/>
-      <circle cx="24" cy="34" r="1.5" fill="white" opacity="0.25"/>
-      <circle cx="85" cy="50" r="1.8" fill="white" opacity="0.25"/>
-      <circle cx="45" cy="72" r="2" fill="white" opacity="0.3"/>
-      <line x1="78" y1="26" x2="80" y2="18" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
-      <line x1="20" y1="38" x2="16" y2="32" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
-      <line x1="85" y1="50" x2="88" y2="56" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
-      <line x1="45" y1="72" x2="40" y2="76" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
-      <ellipse cx="48" cy="72" rx="10" ry="4" fill="#c8d6b0" opacity="0.25" transform="rotate(25,48,72)"/>
-      <ellipse cx="20" cy="60" rx="8" ry="3" fill="#c8d6b0" opacity="0.2" transform="rotate(-40,20,60)"/>
-      <ellipse cx="80" cy="60" rx="9" ry="3.5" fill="#c8d6b0" opacity="0.2" transform="rotate(30,80,60)"/>
-      <ellipse cx="76" cy="18" rx="7" ry="3" fill="#c8d6b0" opacity="0.18" transform="rotate(-10,76,18)"/>
+      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(-40,50,45)" opacity="0.4"/>
+      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(20,50,45)" opacity="0.4"/>
+      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(80,50,45)" opacity="0.4"/>
+      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(140,50,45)" opacity="0.4"/>
+      <ellipse cx="50" cy="45" rx="16" ry="20" fill="url(#peony3-base)" transform="rotate(-10,50,45)" opacity="0.55"/>
+      <ellipse cx="50" cy="45" rx="16" ry="20" fill="url(#peony3-base)" transform="rotate(50,50,45)" opacity="0.55"/>
+      <ellipse cx="50" cy="45" rx="16" ry="20" fill="url(#peony3-base)" transform="rotate(110,50,45)" opacity="0.55"/>
+      <ellipse cx="50" cy="45" rx="10" ry="13" fill="url(#peony3-base)" transform="rotate(15,50,45)" opacity="0.65"/>
+      <ellipse cx="50" cy="45" rx="10" ry="13" fill="url(#peony3-base)" transform="rotate(75,50,45)" opacity="0.65"/>
+      <ellipse cx="50" cy="45" rx="10" ry="13" fill="url(#peony3-base)" transform="rotate(135,50,45)" opacity="0.65"/>
+      <circle cx="50" cy="45" r="4.5" fill="#f5e6a3" opacity="0.35"/>
+      <circle cx="50" cy="45" r="2" fill="#d4af37" opacity="0.25"/>
+      <ellipse cx="47" cy="41" rx="2.5" ry="1.5" fill="white" opacity="0.1"/>
     </svg>
   </div>
 
-  <!-- Pen -->
-  <div class="pen">
+  <!-- Flower 5: Baby's breath (left) -->
+  <div class="flower flower-5">
     <svg viewBox="0 0 100 100">
-      <defs>
-        <linearGradient id="pen-body" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#d4af37"/>
-          <stop offset="30%" stop-color="#f5e6a3"/>
-          <stop offset="50%" stop-color="#fff8dc"/>
-          <stop offset="70%" stop-color="#d4af37"/>
-          <stop offset="100%" stop-color="#b8860b"/>
-        </linearGradient>
-        <linearGradient id="pen-nib" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#f5e6a3"/>
-          <stop offset="50%" stop-color="#d4af37"/>
-          <stop offset="100%" stop-color="#8a6e10"/>
-        </linearGradient>
-      </defs>
-      <rect x="20" y="38" width="60" height="8" rx="2" fill="url(#pen-body)" opacity="0.8"/>
-      <rect x="22" y="42" width="56" height="2" fill="#b8860b" opacity="0.3"/>
-      <rect x="15" y="36" width="8" height="12" rx="1.5" fill="url(#pen-body)" opacity="0.7"/>
-      <circle cx="19" cy="36" r="2.5" fill="url(#pen-body)" opacity="0.6"/>
-      <path d="M80,42 L92,48 L80,52 Z" fill="url(#pen-nib)" opacity="0.7"/>
-      <line x1="80" y1="42" x2="90" y2="48" stroke="#f5e6a3" stroke-width="0.3" opacity="0.4"/>
-      <line x1="80" y1="52" x2="90" y2="48" stroke="#f5e6a3" stroke-width="0.3" opacity="0.4"/>
-      <circle cx="93" cy="48" r="1" fill="#1a1a2e" opacity="0.3"/>
-      <rect x="18" y="30" width="3" height="20" rx="1" fill="url(#pen-body)" opacity="0.5"/>
-      <rect x="25" y="39" width="20" height="1.5" rx="0.5" fill="white" opacity="0.15"/>
+      <circle cx="30" cy="38" r="3.5" fill="white" opacity="0.55"/>
+      <circle cx="45" cy="32" r="3" fill="white" opacity="0.45"/>
+      <circle cx="58" cy="40" r="2.5" fill="white" opacity="0.4"/>
+      <circle cx="38" cy="48" r="2.8" fill="white" opacity="0.5"/>
+      <circle cx="52" cy="28" r="2.5" fill="white" opacity="0.4"/>
+      <circle cx="35" cy="42" r="2" fill="white" opacity="0.35"/>
+      <circle cx="62" cy="35" r="2" fill="white" opacity="0.3"/>
+      <circle cx="48" cy="50" r="1.8" fill="white" opacity="0.3"/>
+      <circle cx="55" cy="32" r="1.5" fill="white" opacity="0.35"/>
+      <circle cx="40" cy="36" r="1.5" fill="white" opacity="0.4"/>
+      <line x1="30" y1="38" x2="25" y2="55" stroke="#a8b890" stroke-width="0.6" opacity="0.25"/>
+      <line x1="45" y1="32" x2="40" y2="55" stroke="#a8b890" stroke-width="0.6" opacity="0.25"/>
+      <line x1="58" y1="40" x2="60" y2="55" stroke="#a8b890" stroke-width="0.6" opacity="0.25"/>
+      <line x1="38" y1="48" x2="34" y2="58" stroke="#a8b890" stroke-width="0.5" opacity="0.2"/>
+      <line x1="52" y1="28" x2="50" y2="55" stroke="#a8b890" stroke-width="0.5" opacity="0.2"/>
+      <line x1="62" y1="35" x2="64" y2="55" stroke="#a8b890" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="28" cy="36" r="1" fill="#f5e6a3" opacity="0.3"/>
+      <circle cx="43" cy="30" r="0.8" fill="#f5e6a3" opacity="0.25"/>
+      <circle cx="56" cy="38" r="0.8" fill="#f5e6a3" opacity="0.2"/>
     </svg>
   </div>
 
-  <!-- Book -->
-  <div class="book">
-    <svg viewBox="0 0 100 90">
-      <defs>
-        <linearGradient id="book-cover" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#d4af37"/>
-          <stop offset="50%" stop-color="#f5e6a3"/>
-          <stop offset="100%" stop-color="#b8860b"/>
-        </linearGradient>
-        <linearGradient id="book-page" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#faf8f3"/>
-          <stop offset="50%" stop-color="#f5f0e8"/>
-          <stop offset="100%" stop-color="#faf8f3"/>
-        </linearGradient>
-      </defs>
-      <path d="M50,80 L50,10 L8,16 L8,86 Z" fill="url(#book-page)" opacity="0.7"/>
-      <path d="M50,80 L50,10 L92,16 L92,86 Z" fill="url(#book-page)" opacity="0.65"/>
-      <line x1="50" y1="10" x2="50" y2="80" stroke="url(#book-cover)" stroke-width="1.5" opacity="0.5"/>
-      <path d="M50,10 L8,16" stroke="url(#book-cover)" stroke-width="1.5" fill="none" opacity="0.4"/>
-      <path d="M50,10 L92,16" stroke="url(#book-cover)" stroke-width="1.5" fill="none" opacity="0.4"/>
-      <path d="M50,80 L8,86" stroke="url(#book-cover)" stroke-width="1.5" fill="none" opacity="0.4"/>
-      <path d="M50,80 L92,86" stroke="url(#book-cover)" stroke-width="1.5" fill="none" opacity="0.4"/>
-      <line x1="18" y1="28" x2="44" y2="24" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
-      <line x1="18" y1="36" x2="44" y2="32" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
-      <line x1="18" y1="44" x2="44" y2="40" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
-      <line x1="18" y1="52" x2="44" y2="48" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
-      <line x1="56" y1="24" x2="82" y2="28" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
-      <line x1="56" y1="32" x2="82" y2="36" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
-      <line x1="56" y1="40" x2="82" y2="44" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
-      <line x1="56" y1="48" x2="82" y2="52" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
-      <circle cx="10" cy="18" r="1.5" fill="url(#book-cover)" opacity="0.3"/>
-      <circle cx="90" cy="18" r="1.5" fill="url(#book-cover)" opacity="0.3"/>
+  <!-- Flower 6: Baby's breath (right) -->
+  <div class="flower flower-6">
+    <svg viewBox="0 0 100 100">
+      <circle cx="60" cy="35" r="3.5" fill="white" opacity="0.45"/>
+      <circle cx="45" cy="30" r="3" fill="white" opacity="0.4"/>
+      <circle cx="72" cy="42" r="2.5" fill="white" opacity="0.35"/>
+      <circle cx="52" cy="44" r="2.8" fill="white" opacity="0.4"/>
+      <circle cx="56" cy="25" r="2.5" fill="white" opacity="0.3"/>
+      <circle cx="65" cy="32" r="2" fill="white" opacity="0.3"/>
+      <circle cx="48" cy="38" r="1.8" fill="white" opacity="0.35"/>
+      <circle cx="68" cy="28" r="1.5" fill="white" opacity="0.25"/>
+      <line x1="60" y1="35" x2="64" y2="52" stroke="#a8b890" stroke-width="0.6" opacity="0.2"/>
+      <line x1="45" y1="30" x2="42" y2="50" stroke="#a8b890" stroke-width="0.6" opacity="0.2"/>
+      <line x1="72" y1="42" x2="74" y2="52" stroke="#a8b890" stroke-width="0.5" opacity="0.2"/>
+      <line x1="52" y1="44" x2="50" y2="54" stroke="#a8b890" stroke-width="0.5" opacity="0.2"/>
+      <line x1="56" y1="25" x2="54" y2="50" stroke="#a8b890" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="58" cy="33" r="0.8" fill="#f5e6a3" opacity="0.2"/>
+      <circle cx="70" cy="40" r="0.8" fill="#f5e6a3" opacity="0.2"/>
+    </svg>
+  </div>
+
+  <!-- Cake -->
+  <div class="cake-container">
+    <svg viewBox="0 0 100 100">
+      <rect x="20" y="55" width="60" height="25" rx="3" fill="url(#gold-metallic)" opacity="0.5"/>
+      <rect x="25" y="40" width="50" height="18" rx="2" fill="url(#gold-metallic)" opacity="0.35"/>
+      <rect x="30" y="28" width="40" height="14" rx="2" fill="url(#gold-metallic)" opacity="0.25"/>
+      <path d="M30,28 Q50,22 70,28" fill="none" stroke="url(#gold-metallic)" stroke-width="1" opacity="0.3"/>
+      <rect x="48" y="12" width="4" height="16" rx="1" fill="url(#gold-metallic)" opacity="0.45"/>
+      <ellipse cx="50" cy="12" rx="4" ry="3" fill="#ffcc80" opacity="0.35"/>
+      <ellipse cx="50" cy="11" rx="2" ry="2" fill="#ffab40" opacity="0.25"/>
+      <line x1="25" y1="48" x2="75" y2="48" stroke="url(#gold-metallic)" stroke-width="0.6" opacity="0.2"/>
+      <line x1="30" y1="36" x2="70" y2="36" stroke="url(#gold-metallic)" stroke-width="0.6" opacity="0.2"/>
+      <line x1="28" y1="62" x2="72" y2="62" stroke="url(#gold-metallic)" stroke-width="0.4" opacity="0.15"/>
+      <line x1="22" y1="72" x2="78" y2="72" stroke="url(#gold-metallic)" stroke-width="0.4" opacity="0.15"/>
     </svg>
   </div>
 
   <!-- Stars -->
-  <div class="star star-1"><svg viewBox="0 0 12 12"><polygon points="6,0 7.8,4.2 12,4.8 9,7.8 9.6,12 6,9.6 2.4,12 3,7.8 0,4.8 4.2,4.2" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
-  <div class="star star-2"><svg viewBox="0 0 10 10"><polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
-  <div class="star star-3"><svg viewBox="0 0 10 10"><polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
-  <div class="star star-4"><svg viewBox="0 0 10 10"><polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
-  <div class="star star-5"><svg viewBox="0 0 10 10"><polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
-  <div class="star star-6"><svg viewBox="0 0 8 8"><polygon points="4,0 5.2,3 8,3.5 6,5.5 6.2,8.5 4,6.5 1.8,8.5 2,5.5 0,3.5 2.8,3" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
-
-  <!-- Top Text -->
-  <div class="top-text">
-    <div class="sub">Celebrating You</div>
-    <div class="separator"></div>
+  <div class="star star-1">
+    <svg viewBox="0 0 14 14">
+      <defs>
+        <radialGradient id="star-gold" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fff8dc"/>
+          <stop offset="50%" stop-color="#f5e6a3"/>
+          <stop offset="100%" stop-color="#d4af37"/>
+        </radialGradient>
+      </defs>
+      <polygon points="7,0 9,4.8 14,5.6 10.5,9 11.2,14 7,11.2 2.8,14 3.5,9 0,5.6 5,4.8" fill="url(#star-gold)" filter="url(#emboss-shadow)"/>
+    </svg>
+  </div>
+  <div class="star star-2">
+    <svg viewBox="0 0 10 10">
+      <polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#star-gold)" filter="url(#emboss-shadow)"/>
+    </svg>
+  </div>
+  <div class="star star-3">
+    <svg viewBox="0 0 10 10">
+      <polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#star-gold)" filter="url(#emboss-shadow)"/>
+    </svg>
+  </div>
+  <div class="star star-4">
+    <svg viewBox="0 0 10 10">
+      <polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#star-gold)" filter="url(#emboss-shadow)"/>
+    </svg>
+  </div>
+  <div class="star star-5">
+    <svg viewBox="0 0 10 10">
+      <polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#star-gold)" filter="url(#emboss-shadow)"/>
+    </svg>
+  </div>
+  <div class="star star-6">
+    <svg viewBox="0 0 8 8">
+      <polygon points="4,0 5.2,3 8,3.5 6,5.5 6.2,8.5 4,6.5 1.8,8.5 2,5.5 0,3.5 2.8,3" fill="url(#star-gold)" filter="url(#emboss-shadow)"/>
+    </svg>
   </div>
 
-  <!-- Glassmorphism Panel (EMPTY — for Arabic) -->
-  <div class="glass-panel">
-    <div class="arabic-text">
-        كل سنة وحضرتك طيبة وبألف خير يا ميس.
-        <br><br>
-        بجد أتمنى من كل قلبي تكون السنة الجديدة في حياتك مليانة<br>
-        سعادة وراحة ونجاح، وربنا يحقق لحضرتك كل اللي بتتمنيه<br>
-        ويبارك في عمرك وصحتك ويجعل كل أيامك فرحة.
-        <br><br>
-        حابب أشكر حضرتك على كل المجهود اللي بتعمليه معانا،<br>
-        وعلى صبرك واهتمامك، لأن مش أي مدرس بيقدر يسيب أثر حلو<br>
-        في طلابه، لكن حضرتك قدرتي تعملي ده..
-        <br><br>
-        أتمنى السنة دي تكون بداية لأحلام جديدة تتحقق، وربنا يرزقك<br>
-        السعادة والتوفيق في كل خطوة، ويجازيكي خير على كل تعب<br>
-        ومجهود بذلتيه معانا. وجود حضرتك في حياتنا التعليمية نعمة،<br>
-        وإن شاء الله تفضلي دايمًا ناجحة ومتميزة.
-        <br><br>
-        كل سنة وحضرتك منورة حياة كل اللي حواليكي، وربنا يديم<br>
-        عليكي الصحة والعافية، ويكتبلك الخير أينما كان، ويجعل<br>
-        أيامك كلها أفراح ونجاحات.
-        <br><br>
-        عيد ميلاد سعيد، وعقبال 100 سنة في سعادة وراحة بال،<br>
-        وإن شاء الله أشوف حضرتك دايمًا مبتسمة ومحققة كل اللي<br>
-        نفسك فيه. كل سنة وحضرتك بخير
+  <!-- Floating Particles -->
+  <div class="particles">
+    <svg viewBox="0 0 2100 2970">
+      <circle cx="200" cy="400" r="2.5" fill="#d4af37" opacity="0.35">
+        <animate attributeName="opacity" values="0.35;0.05;0.35" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1800" cy="300" r="2" fill="#d4af37" opacity="0.25">
+        <animate attributeName="opacity" values="0.25;0.03;0.25" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="300" cy="1500" r="2.5" fill="#f5e6a3" opacity="0.3">
+        <animate attributeName="opacity" values="0.3;0.05;0.3" dur="5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1850" cy="1800" r="2" fill="#d4af37" opacity="0.25">
+        <animate attributeName="opacity" values="0.25;0.03;0.25" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="150" cy="2500" r="2.5" fill="#f5e6a3" opacity="0.2">
+        <animate attributeName="opacity" values="0.2;0.03;0.2" dur="4.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1950" cy="2600" r="2" fill="#d4af37" opacity="0.18">
+        <animate attributeName="opacity" values="0.18;0.02;0.18" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1000" cy="200" r="2.5" fill="#f5e6a3" opacity="0.25">
+        <animate attributeName="opacity" values="0.25;0.04;0.25" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="1000" cy="2750" r="2" fill="#d4af37" opacity="0.15">
+        <animate attributeName="opacity" values="0.15;0.02;0.15" dur="5s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+
+  <!-- Content Area -->
+  <div class="content">
+
+    <!-- Title Gold Glow -->
+    <div class="title-glow"></div>
+
+    <!-- Top Ornament -->
+    <div class="top-ornament">
+      <svg viewBox="0 0 200 24">
+        <defs>
+          <linearGradient id="ornament-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d4af37" stop-opacity="0"/>
+            <stop offset="20%" stop-color="#c8a84e" stop-opacity="0.35"/>
+            <stop offset="35%" stop-color="#f5e6a3" stop-opacity="0.6"/>
+            <stop offset="50%" stop-color="#fff8dc" stop-opacity="0.8"/>
+            <stop offset="65%" stop-color="#f5e6a3" stop-opacity="0.6"/>
+            <stop offset="80%" stop-color="#c8a84e" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="10" y1="12" x2="82" y2="12" stroke="url(#ornament-gold)" stroke-width="1.2"/>
+        <circle cx="100" cy="12" r="3.5" fill="url(#gold-metallic)" opacity="0.65" filter="url(#emboss-shadow)"/>
+        <line x1="118" y1="12" x2="190" y2="12" stroke="url(#ornament-gold)" stroke-width="1.2"/>
+      </svg>
     </div>
-  </div>
 
-  <!-- Bottom Quote -->
-  <div class="bottom-text">
-    <div class="quote">"To educate is to inspire a soul that will never forget."</div>
+    <!-- English Title -->
+    <div class="title-en" dir="ltr">
+      <span>Happy</span><br>
+      <span>Birthday,</span><br>
+      <span>Dear Miss</span>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider">
+      <svg viewBox="0 0 100 12">
+        <defs>
+          <linearGradient id="div-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d4af37" stop-opacity="0"/>
+            <stop offset="40%" stop-color="#c8a84e" stop-opacity="0.3"/>
+            <stop offset="50%" stop-color="#f5e6a3" stop-opacity="0.5"/>
+            <stop offset="60%" stop-color="#c8a84e" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="5" y1="6" x2="44" y2="6" stroke="url(#div-gold)" stroke-width="0.8"/>
+        <circle cx="50" cy="6" r="2.5" fill="url(#gold-metallic)" opacity="0.45"/>
+        <line x1="56" y1="6" x2="95" y2="6" stroke="url(#div-gold)" stroke-width="0.8"/>
+      </svg>
+    </div>
+
+    <!-- Arabic Text -->
+    <div class="title-ar">
+      ┘â┘ä ╪│┘å╪⌐ ┘ê╪¡╪╢╪▒╪¬┘â ╪╖┘è╪¿╪⌐ ┘ê╪¿╪ú┘ä┘ü ╪«┘è╪▒ ┘è╪º <span class="highlight">┘à┘è╪│</span>.<br><br>
+      ╪¿╪¼╪» ╪ú╪¬┘à┘å┘ë ┘à┘å ┘â┘ä ┘é┘ä╪¿┘è ╪¬┘â┘ê┘å ╪º┘ä╪│┘å╪⌐ ╪º┘ä╪¼╪»┘è╪»╪⌐ ┘ü┘è ╪¡┘è╪º╪¬┘â ┘à┘ä┘è╪º┘å╪⌐<br>
+      ╪│╪╣╪º╪»╪⌐ ┘ê╪▒╪º╪¡╪⌐ ┘ê┘å╪¼╪º╪¡╪î ┘ê╪▒╪¿┘å╪º ┘è╪¡┘é┘é ┘ä╪¡╪╢╪▒╪¬┘â ┘â┘ä ╪º┘ä┘ä┘è ╪¿╪¬╪¬┘à┘å┘è┘ç<br>
+      ┘ê┘è╪¿╪º╪▒┘â ┘ü┘è ╪╣┘à╪▒┘â ┘ê╪╡╪¡╪¬┘â ┘ê┘è╪¼╪╣┘ä ┘â┘ä ╪ú┘è╪º┘à┘â ┘ü╪▒╪¡╪⌐.<br><br>
+      ╪¡╪º╪¿╪¿ ╪ú╪┤┘â╪▒ ╪¡╪╢╪▒╪¬┘â ╪╣┘ä┘ë ┘â┘ä ╪º┘ä┘à╪¼┘ç┘ê╪» ╪º┘ä┘ä┘è ╪¿╪¬╪╣┘à┘ä┘è┘ç ┘à╪╣╪º┘å╪º╪î<br>
+      ┘ê╪╣┘ä┘ë ╪╡╪¿╪▒┘â ┘ê╪º┘ç╪¬┘à╪º┘à┘â╪î ┘ä╪ú┘å ┘à╪┤ ╪ú┘è ┘à╪»╪▒╪│ ╪¿┘è┘é╪»╪▒ ┘è╪│┘è╪¿ ╪ú╪½╪▒ ╪¡┘ä┘ê<br>
+      ┘ü┘è ╪╖┘ä╪º╪¿┘ç╪î ┘ä┘â┘å ╪¡╪╢╪▒╪¬┘â ┘é╪»╪▒╪¬┘è ╪¬╪╣┘à┘ä┘è ╪»┘ç..<br><br>
+      ╪ú╪¬┘à┘å┘ë ╪º┘ä╪│┘å╪⌐ ╪»┘è ╪¬┘â┘ê┘å ╪¿╪»╪º┘è╪⌐ ┘ä╪ú╪¡┘ä╪º┘à ╪¼╪»┘è╪»╪⌐ ╪¬╪¬╪¡┘é┘é╪î ┘ê╪▒╪¿┘å╪º ┘è╪▒╪▓┘é┘â<br>
+      ╪º┘ä╪│╪╣╪º╪»╪⌐ ┘ê╪º┘ä╪¬┘ê┘ü┘è┘é ┘ü┘è ┘â┘ä ╪«╪╖┘ê╪⌐╪î ┘ê┘è╪¼╪º╪▓┘è┘â┘è ╪«┘è╪▒ ╪╣┘ä┘ë ┘â┘ä ╪¬╪╣╪¿<br>
+      ┘ê┘à╪¼┘ç┘ê╪» ╪¿╪░┘ä╪¬┘è┘ç ┘à╪╣╪º┘å╪º. ┘ê╪¼┘ê╪» ╪¡╪╢╪▒╪¬┘â ┘ü┘è ╪¡┘è╪º╪¬┘å╪º ╪º┘ä╪¬╪╣┘ä┘è┘à┘è╪⌐ ┘å╪╣┘à╪⌐╪î<br>
+      ┘ê╪Ñ┘å ╪┤╪º╪í ╪º┘ä┘ä┘ç ╪¬┘ü╪╢┘ä┘è ╪»╪º┘è┘à┘ï╪º ┘å╪º╪¼╪¡╪⌐ ┘ê┘à╪¬┘à┘è╪▓╪⌐.<br><br>
+      ┘â┘ä ╪│┘å╪⌐ ┘ê╪¡╪╢╪▒╪¬┘â ┘à┘å┘ê╪▒╪⌐ ╪¡┘è╪º╪⌐ ┘â┘ä ╪º┘ä┘ä┘è ╪¡┘ê╪º┘ä┘è┘â┘è╪î ┘ê╪▒╪¿┘å╪º ┘è╪»┘è┘à<br>
+      ╪╣┘ä┘è┘â┘è ╪º┘ä╪╡╪¡╪⌐ ┘ê╪º┘ä╪╣╪º┘ü┘è╪⌐╪î ┘ê┘è┘â╪¬╪¿┘ä┘â ╪º┘ä╪«┘è╪▒ ╪ú┘è┘å┘à╪º ┘â╪º┘å╪î ┘ê┘è╪¼╪╣┘ä<br>
+      ╪ú┘è╪º┘à┘â ┘â┘ä┘ç╪º ╪ú┘ü╪▒╪º╪¡ ┘ê┘å╪¼╪º╪¡╪º╪¬.<br><br>
+      ╪╣┘è╪» ┘à┘è┘ä╪º╪» ╪│╪╣┘è╪»╪î ┘ê╪╣┘é╪¿╪º┘ä 100 ╪│┘å╪⌐ ┘ü┘è ╪│╪╣╪º╪»╪⌐ ┘ê╪▒╪º╪¡╪⌐ ╪¿╪º┘ä╪î<br>
+      ┘ê╪Ñ┘å ╪┤╪º╪í ╪º┘ä┘ä┘ç ╪ú╪┤┘ê┘ü ╪¡╪╢╪▒╪¬┘â ╪»╪º┘è┘à┘ï╪º ┘à╪¿╪¬╪│┘à╪⌐ ┘ê┘à╪¡┘é┘é╪⌐ ┘â┘ä ╪º┘ä┘ä┘è<br>
+      ┘å┘ü╪│┘â ┘ü┘è┘ç. ┘â┘ä ╪│┘å╪⌐ ┘ê╪¡╪╢╪▒╪¬┘â ╪¿╪«┘è╪▒
+    </div>
+
+    <!-- Divider -->
+    <div class="divider">
+      <svg viewBox="0 0 100 12">
+        <defs>
+          <linearGradient id="div-gold2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d4af37" stop-opacity="0"/>
+            <stop offset="40%" stop-color="#c8a84e" stop-opacity="0.3"/>
+            <stop offset="50%" stop-color="#f5e6a3" stop-opacity="0.5"/>
+            <stop offset="60%" stop-color="#c8a84e" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="5" y1="6" x2="44" y2="6" stroke="url(#div-gold2)" stroke-width="0.8"/>
+        <circle cx="50" cy="6" r="2.5" fill="url(#gold-metallic)" opacity="0.45"/>
+        <line x1="56" y1="6" x2="95" y2="6" stroke="url(#div-gold2)" stroke-width="0.8"/>
+      </svg>
+    </div>
+
+    <!-- Bottom Quote -->
+    <div class="bottom-quote" dir="ltr">
+      Great teachers inspire minds and change lives forever.
+    </div>
+
   </div>
 
 </div>
 </div>
+
+<script>
+(function() {
+  function scaleCard() {
+    var card = document.querySelector('.card');
+    if (!card) return;
+    var ww = window.innerWidth;
+    var wh = window.innerHeight;
+    var pad = ww > 850 ? 24 : (ww > 500 ? 16 : 8);
+    var aw = ww - pad * 2;
+    var ah = wh - pad * 2;
+    var nw = 210 / 25.4 * 96;
+    var nh = 297 / 25.4 * 96;
+    var sx = aw / nw;
+    var sy = ah / nh;
+    var s = Math.min(sx, sy, 1);
+    card.style.transform = s < 1 ? 'scale(' + s + ')' : '';
+    card.style.transformOrigin = 'top center';
+  }
+  scaleCard();
+  var timeout;
+  function onResize() {
+    clearTimeout(timeout);
+    timeout = setTimeout(scaleCard, 120);
+  }
+  window.addEventListener('resize', onResize);
+  window.addEventListener('orientationchange', function() {
+    setTimeout(scaleCard, 300);
+  });
+})();
+</script>
 
 </body>
 </html>
