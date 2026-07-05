@@ -212,7 +212,7 @@
   /* ΓöÇΓöÇ English Title ΓöÇΓöÇ */
   .title-en {
     font-family: 'Playfair Display', 'Cormorant Garamond', serif;
-    font-size: 14.5mm;
+    font-size: 15mm;
     font-weight: 700;
     color: #c8a84e;
     letter-spacing: 4.5px;
@@ -272,13 +272,20 @@
   }
 
   /* ΓöÇΓöÇ Bottom Quote ΓöÇΓöÇ */
+  .text-divider {
+    margin: 3mm 0 2.5mm;
+    opacity: 0.5;
+    width: 50mm;
+  }
+  .text-divider svg { width: 100%; height: auto; display: block; }
+
   .quote-gold {
     font-family: 'Cormorant Garamond', 'Playfair Display', serif;
     font-size: 4.5mm;
     font-style: italic;
     color: #a08860;
     letter-spacing: 1.5px;
-    margin-top: 1mm;
+    margin-top: 0;
     margin-bottom: 0;
     font-weight: 400;
     opacity: 0.85;
@@ -306,24 +313,24 @@
     font-family: 'Cormorant Garamond', 'Playfair Display', serif;
     font-size: 2.8mm;
     font-style: italic;
-    color: #a09080;
-    opacity: 0.5;
+    color: #8a7a6a;
+    opacity: 0.6;
     letter-spacing: 0.5px;
     margin-bottom: 1mm;
     -webkit-font-smoothing: antialiased;
   }
   .sig-name {
     font-family: 'Great Vibes', 'Brush Script MT', cursive;
-    font-size: 6.6mm;
+    font-size: 7mm;
     font-weight: 400;
-    color: #7a5a3a;
-    opacity: 0.8;
+    color: #5a3a2a;
+    opacity: 0.85;
     letter-spacing: 1px;
     line-height: 1;
     margin-top: -1mm;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    filter: drop-shadow(0 0.5px 1px rgba(0,0,0,0.06));
+    filter: drop-shadow(0 0.5px 1px rgba(0,0,0,0.08));
   }
 
   .gold-emblem {
@@ -363,24 +370,8 @@
   .flower svg { width: 100%; height: 100%; overflow: visible; }
   .flower-1 { top: 16mm; left: 10mm; width: 60mm; height: 60mm; opacity: 0.55; }
   .flower-2 { top: 8mm; right: 5mm; width: 75mm; height: 75mm; opacity: 0.4; }
-  .flower-3 { bottom: 12mm; left: 8mm; width: 65mm; height: 65mm; opacity: 0.45; }
-  .flower-4 { bottom: 6mm; right: 8mm; width: 70mm; height: 70mm; opacity: 0.5; }
   .flower-5 { top: 65mm; left: -8mm; width: 50mm; height: 50mm; opacity: 0.3; }
   .flower-6 { bottom: 65mm; right: -8mm; width: 55mm; height: 55mm; opacity: 0.25; }
-
-  /* ΓöÇΓöÇ Cake ΓöÇΓöÇ */
-  .cake-container {
-    position: absolute;
-    bottom: 58mm;
-    right: 50%;
-    transform: translateX(50%);
-    z-index: 3;
-    pointer-events: none;
-    width: 42mm;
-    height: 42mm;
-    opacity: 0.12;
-  }
-  .cake-container svg { width: 100%; height: 100%; }
 
   /* ΓöÇΓöÇ Stars ΓöÇΓöÇ */
   .star {
@@ -733,61 +724,7 @@
     </svg>
   </div>
 
-  <!-- Flower 3: Rose (bottom left) -->
-  <div class="flower flower-3">
-    <svg viewBox="0 0 100 100">
-      <defs>
-        <radialGradient id="rose3-base" cx="45%" cy="40%" r="55%">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="50%" stop-color="#faf6f0"/>
-          <stop offset="80%" stop-color="#f0e8dc"/>
-          <stop offset="100%" stop-color="#e4d6c4"/>
-        </radialGradient>
-      </defs>
-      <ellipse cx="50" cy="48" rx="20" ry="24" fill="url(#rose3-base)" transform="rotate(-40,50,48)" opacity="0.45"/>
-      <ellipse cx="50" cy="48" rx="20" ry="24" fill="url(#rose3-base)" transform="rotate(40,50,48)" opacity="0.45"/>
-      <ellipse cx="50" cy="48" rx="20" ry="24" fill="url(#rose3-base)" transform="rotate(100,50,48)" opacity="0.45"/>
-      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(-20,50,48)" opacity="0.6"/>
-      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(30,50,48)" opacity="0.6"/>
-      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(80,50,48)" opacity="0.6"/>
-      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(130,50,48)" opacity="0.6"/>
-      <ellipse cx="50" cy="48" rx="9" ry="12" fill="url(#rose3-base)" transform="rotate(0,50,48)" opacity="0.75"/>
-      <ellipse cx="50" cy="48" rx="9" ry="12" fill="url(#rose3-base)" transform="rotate(60,50,48)" opacity="0.75"/>
-      <ellipse cx="50" cy="48" rx="9" ry="12" fill="url(#rose3-base)" transform="rotate(120,50,48)" opacity="0.75"/>
-      <circle cx="50" cy="48" r="4" fill="#f5e6a3" opacity="0.45"/>
-      <circle cx="50" cy="48" r="2" fill="#d4af37" opacity="0.3"/>
-      <ellipse cx="47" cy="44" rx="2.5" ry="2" fill="white" opacity="0.12"/>
-      <ellipse cx="35" cy="62" rx="10" ry="4" fill="#c8d6b0" opacity="0.3" transform="rotate(-20,35,62)"/>
-      <ellipse cx="65" cy="60" rx="8" ry="3" fill="#c8d6b0" opacity="0.25" transform="rotate(15,65,60)"/>
-    </svg>
-  </div>
 
-  <!-- Flower 4: Peony (bottom right) -->
-  <div class="flower flower-4">
-    <svg viewBox="0 0 100 100">
-      <defs>
-        <radialGradient id="peony3-base" cx="45%" cy="40%" r="55%">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="35%" stop-color="#fcf9f5"/>
-          <stop offset="65%" stop-color="#f2eae0"/>
-          <stop offset="100%" stop-color="#e6d8c6"/>
-        </radialGradient>
-      </defs>
-      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(-40,50,45)" opacity="0.4"/>
-      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(20,50,45)" opacity="0.4"/>
-      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(80,50,45)" opacity="0.4"/>
-      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(140,50,45)" opacity="0.4"/>
-      <ellipse cx="50" cy="45" rx="16" ry="20" fill="url(#peony3-base)" transform="rotate(-10,50,45)" opacity="0.55"/>
-      <ellipse cx="50" cy="45" rx="16" ry="20" fill="url(#peony3-base)" transform="rotate(50,50,45)" opacity="0.55"/>
-      <ellipse cx="50" cy="45" rx="16" ry="20" fill="url(#peony3-base)" transform="rotate(110,50,45)" opacity="0.55"/>
-      <ellipse cx="50" cy="45" rx="10" ry="13" fill="url(#peony3-base)" transform="rotate(15,50,45)" opacity="0.65"/>
-      <ellipse cx="50" cy="45" rx="10" ry="13" fill="url(#peony3-base)" transform="rotate(75,50,45)" opacity="0.65"/>
-      <ellipse cx="50" cy="45" rx="10" ry="13" fill="url(#peony3-base)" transform="rotate(135,50,45)" opacity="0.65"/>
-      <circle cx="50" cy="45" r="4.5" fill="#f5e6a3" opacity="0.35"/>
-      <circle cx="50" cy="45" r="2" fill="#d4af37" opacity="0.25"/>
-      <ellipse cx="47" cy="41" rx="2.5" ry="1.5" fill="white" opacity="0.1"/>
-    </svg>
-  </div>
 
   <!-- Flower 5: Baby's breath (left) -->
   <div class="flower flower-5">
@@ -835,22 +772,7 @@
     </svg>
   </div>
 
-  <!-- Cake -->
-  <div class="cake-container">
-    <svg viewBox="0 0 100 100">
-      <rect x="20" y="55" width="60" height="25" rx="3" fill="url(#gold-metallic)" opacity="0.5"/>
-      <rect x="25" y="40" width="50" height="18" rx="2" fill="url(#gold-metallic)" opacity="0.35"/>
-      <rect x="30" y="28" width="40" height="14" rx="2" fill="url(#gold-metallic)" opacity="0.25"/>
-      <path d="M30,28 Q50,22 70,28" fill="none" stroke="url(#gold-metallic)" stroke-width="1" opacity="0.3"/>
-      <rect x="48" y="12" width="4" height="16" rx="1" fill="url(#gold-metallic)" opacity="0.45"/>
-      <ellipse cx="50" cy="12" rx="4" ry="3" fill="#ffcc80" opacity="0.35"/>
-      <ellipse cx="50" cy="11" rx="2" ry="2" fill="#ffab40" opacity="0.25"/>
-      <line x1="25" y1="48" x2="75" y2="48" stroke="url(#gold-metallic)" stroke-width="0.6" opacity="0.2"/>
-      <line x1="30" y1="36" x2="70" y2="36" stroke="url(#gold-metallic)" stroke-width="0.6" opacity="0.2"/>
-      <line x1="28" y1="62" x2="72" y2="62" stroke="url(#gold-metallic)" stroke-width="0.4" opacity="0.15"/>
-      <line x1="22" y1="72" x2="78" y2="72" stroke="url(#gold-metallic)" stroke-width="0.4" opacity="0.15"/>
-    </svg>
-  </div>
+
 
   <!-- Stars -->
   <div class="star star-1">
@@ -991,6 +913,15 @@
       عيد ميلاد سعيد، وعقبال 100 سنة في سعادة وراحة بال،<br>
       وإن شاء الله أشوف حضرتك دايمًا مبتسمة ومحققة كل اللي<br>
       نفسك فيه. كل سنة وحضرتك بخير
+    </div>
+
+    <!-- Separator -->
+    <div class="text-divider">
+      <svg viewBox="0 0 80 8">
+        <line x1="5" y1="4" x2="35" y2="4" stroke="url(#gold-metallic)" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="40" cy="4" r="2" fill="url(#gold-metallic)" opacity="0.35"/>
+        <line x1="45" y1="4" x2="75" y2="4" stroke="url(#gold-metallic)" stroke-width="0.5" opacity="0.3"/>
+      </svg>
     </div>
 
     <!-- Gold Quote under Arabic -->
