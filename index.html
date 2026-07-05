@@ -215,15 +215,16 @@
     position: relative;
     text-rendering: optimizeLegibility;
     text-shadow:
-      0 0 60px rgba(212,175,55,0.18),
-      0 1px 1px rgba(255,248,220,0.5),
-      0 2px 3px rgba(0,0,0,0.08),
-      0 4px 10px rgba(212,175,55,0.08);
-    background-image: linear-gradient(180deg, #f5e6a3 0%, #e8c84a 20%, #d4af37 40%, #c8a84e 55%, #b8962e 75%, #a07820 100%);
+      0 0 80px rgba(212,175,55,0.2),
+      0 1px 2px rgba(255,248,220,0.6),
+      0 2px 4px rgba(0,0,0,0.1),
+      0 4px 12px rgba(212,175,55,0.1),
+      0 -0.5px 0 rgba(255,248,220,0.3);
+    background-image: linear-gradient(180deg, #fff8dc 0%, #f5e6a3 15%, #e8c84a 30%, #d4af37 45%, #c8a84e 60%, #b8962e 75%, #c8a84e 85%, #e8c84a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 2px 4px rgba(180,150,40,0.15));
+    filter: drop-shadow(0 2px 4px rgba(180,150,40,0.18));
   }
   @supports not (background-clip: text) {
     .title-en {
@@ -234,7 +235,7 @@
 
   /* ΓöÇΓöÇ Divider ΓöÇΓöÇ */
   .divider {
-    margin: 4mm 0;
+    margin: 3mm 0;
     opacity: 0.35;
     width: 55mm;
   }
@@ -243,11 +244,11 @@
   /* ΓöÇΓöÇ Arabic Text ΓöÇΓöÇ */
   .title-ar {
     font-family: 'Noto Sans Arabic', 'Amiri', serif;
-    font-size: 3.6mm;
+    font-size: 4.3mm;
     font-weight: 450;
     color: #2a1f18;
-    line-height: 1.85;
-    margin: 5mm 0 4mm;
+    line-height: 1.75;
+    margin: 5mm 0 2mm;
     max-width: 86%;
     text-shadow: 0 1px 2px rgba(0,0,0,0.04);
     text-align: center;
@@ -264,60 +265,57 @@
   }
 
   /* ΓöÇΓöÇ Bottom Quote ΓöÇΓöÇ */
-  .bottom-quote {
+  .quote-gold {
     font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-    font-size: 5.5mm;
+    font-size: 4.5mm;
     font-style: italic;
-    color: #7a6a5a;
-    letter-spacing: 1.8px;
-    margin-top: 8mm;
+    color: #c8a84e;
+    letter-spacing: 1.5px;
+    margin-top: 1mm;
+    margin-bottom: 0;
     font-weight: 400;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    opacity: 0.7;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
-  .bottom-quote::before {
-    content: '\201C';
-    font-size: 12mm;
+  .quote-gold .quote-mark {
+    font-size: 7mm;
     color: #d4af37;
-    opacity: 0.2;
-    margin-left: 2mm;
+    opacity: 0.25;
     vertical-align: middle;
-    font-style: normal;
-    line-height: 0;
-  }
-  .bottom-quote::after {
-    content: '\201D';
-    font-size: 12mm;
-    color: #d4af37;
-    opacity: 0.2;
-    margin-right: 2mm;
-    vertical-align: bottom;
-    font-style: normal;
     line-height: 0;
   }
 
-  .signature {
-    margin-top: 6mm;
-    text-align: center;
+  .signature-corner {
+    position: absolute;
+    bottom: 12mm;
+    right: 16mm;
+    z-index: 5;
+    text-align: right;
     direction: ltr;
+    pointer-events: none;
   }
-  .signature-name {
+  .sig-label {
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+    font-size: 2.8mm;
+    font-style: italic;
+    color: #a09080;
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+    margin-bottom: 1mm;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sig-name {
     font-family: 'Great Vibes', 'Brush Script MT', cursive;
-    font-size: 8mm;
+    font-size: 6mm;
     font-weight: 400;
-    color: #5a4a3a;
-    opacity: 0.75;
-    letter-spacing: 1.5px;
+    color: #8a7050;
+    opacity: 0.7;
+    letter-spacing: 1px;
     line-height: 1;
+    margin-top: -1mm;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-  }
-  .signature-line {
-    width: 45mm;
-    height: 10px;
-    margin: 3mm auto 0;
-    display: block;
   }
 
   .gold-emblem {
@@ -986,38 +984,17 @@
       نفسك فيه. كل سنة وحضرتك بخير
     </div>
 
-    <!-- Divider -->
-    <div class="divider">
-      <svg viewBox="0 0 100 12">
-        <defs>
-          <linearGradient id="div-gold2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#d4af37" stop-opacity="0"/>
-            <stop offset="40%" stop-color="#c8a84e" stop-opacity="0.3"/>
-            <stop offset="50%" stop-color="#f5e6a3" stop-opacity="0.5"/>
-            <stop offset="60%" stop-color="#c8a84e" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <line x1="5" y1="6" x2="44" y2="6" stroke="url(#div-gold2)" stroke-width="0.8"/>
-        <circle cx="50" cy="6" r="2.5" fill="url(#gold-metallic)" opacity="0.45"/>
-        <line x1="56" y1="6" x2="95" y2="6" stroke="url(#div-gold2)" stroke-width="0.8"/>
-      </svg>
+    <!-- Gold Quote under Arabic -->
+    <div class="quote-gold" dir="ltr">
+      <span class="quote-mark">&ldquo;</span>Great teachers inspire minds and change lives forever.<span class="quote-mark">&rdquo;</span>
     </div>
 
-    <!-- Bottom Quote -->
-    <div class="bottom-quote" dir="ltr">
-      Great teachers inspire minds and change lives forever.
-    </div>
+  </div>
 
-    <!-- Signature -->
-    <div class="signature" dir="ltr">
-      <div class="signature-name">Abdo Mahmoud</div>
-      <svg class="signature-line" viewBox="0 0 100 10">
-        <path d="M0,5 Q15,0 30,5 T60,5 T85,3 T100,7" stroke="#6a5a4a" stroke-width="0.6" fill="none" opacity="0.35"/>
-        <circle cx="50" cy="5" r="1.2" fill="#d4af37" opacity="0.3"/>
-      </svg>
-    </div>
-
+  <!-- Bottom-right Signature -->
+  <div class="signature-corner" dir="ltr">
+    <div class="sig-label">With sincere appreciation,</div>
+    <div class="sig-name">Abdo</div>
   </div>
 
 </div>
