@@ -297,7 +297,29 @@
     line-height: 0;
   }
 
-  /* ΓöÇΓöÇ Gold Emblem Watermark ΓöÇΓöÇ */
+  .signature {
+    margin-top: 10mm;
+    text-align: center;
+    direction: ltr;
+  }
+  .signature-name {
+    font-family: 'Great Vibes', 'Brush Script MT', cursive;
+    font-size: 8mm;
+    font-weight: 400;
+    color: #5a4a3a;
+    opacity: 0.75;
+    letter-spacing: 1.5px;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .signature-line {
+    width: 45mm;
+    height: 10px;
+    margin: 3mm auto 0;
+    display: block;
+  }
+
   .gold-emblem {
     position: absolute;
     top: 50%;
@@ -985,6 +1007,15 @@
     <!-- Bottom Quote -->
     <div class="bottom-quote" dir="ltr">
       Great teachers inspire minds and change lives forever.
+    </div>
+
+    <!-- Signature -->
+    <div class="signature" dir="ltr">
+      <div class="signature-name">Abdo Mahmoud</div>
+      <svg class="signature-line" viewBox="0 0 100 10">
+        <path d="M0,5 Q15,0 30,5 T60,5 T85,3 T100,7" stroke="#6a5a4a" stroke-width="0.6" fill="none" opacity="0.35"/>
+        <circle cx="50" cy="5" r="1.2" fill="#d4af37" opacity="0.3"/>
+      </svg>
     </div>
 
   </div>
