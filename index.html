@@ -238,9 +238,9 @@
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     z-index: 6;
-    width: 57%;
+    width: 62%;
     min-height: 30%;
-    max-height: 60%;
+    max-height: 70%;
     background: rgba(255,255,252,0.55);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -250,12 +250,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 5%;
-    text-align: center;
-    pointer-events: none;
-    overflow: hidden;
+    justify-content: flex-start;
+    padding: 5% 6%;
+    direction: rtl;
+    text-align: right;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212,175,55,0.3) transparent;
   }
+  .glass-panel::-webkit-scrollbar { width: 3px; }
+  .glass-panel::-webkit-scrollbar-track { background: transparent; }
+  .glass-panel::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.3); border-radius: 3px; }
   .glass-panel::before {
     content: '';
     position: absolute;
@@ -264,29 +269,16 @@
     border: 1px solid rgba(255,255,255,0.4);
     pointer-events: none;
   }
-  .glass-panel .empty-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.4%;
-    font-weight: 300;
-    font-style: italic;
-    color: rgba(180,160,120,0.4);
-    letter-spacing: 2px;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.3);
-  }
-  .glass-panel .divider-line {
-    width: 35%;
-    height: 0.5px;
-    margin: 5% 0;
-    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
-    opacity: 0.4;
-  }
-  .glass-panel .sub-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.3%;
-    font-weight: 300;
-    color: rgba(140,125,110,0.3);
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  .glass-panel .arabic-text {
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-size: 2%;
+    font-weight: 350;
+    line-height: 1.7;
+    color: #2a241c;
+    direction: rtl;
+    text-align: justify;
+    width: 100%;
+    hyphens: auto;
   }
 
   .bottom-text {
@@ -314,9 +306,8 @@
   }
   @media screen and (max-width: 500px) {
     .card-wrapper { padding: 6px; padding-top: 8px; }
-    .glass-panel { width: 52%; }
-    .glass-panel .empty-label { font-size: 2.8%; }
-    .glass-panel .sub-label { font-size: 1.8%; }
+    .glass-panel { width: 54%; padding: 4% 5%; }
+    .glass-panel .arabic-text { font-size: 1.6%; line-height: 1.6; }
     .top-text .sub { font-size: 1.5%; }
     .bottom-text .quote { font-size: 1.8%; width: 55%; }
   }
@@ -694,9 +685,30 @@
 
   <!-- Glassmorphism Panel (EMPTY — for Arabic) -->
   <div class="glass-panel">
-    <div class="empty-label">Your Message Here</div>
-    <div class="divider-line"></div>
-    <div class="sub-label">Personal Message</div>
+    <div class="arabic-text">
+        كل سنة وحضرتك طيبة وبألف خير يا ميس.
+        <br><br>
+        بجد أتمنى من كل قلبي تكون السنة الجديدة في حياتك مليانة<br>
+        سعادة وراحة ونجاح، وربنا يحقق لحضرتك كل اللي بتتمنيه<br>
+        ويبارك في عمرك وصحتك ويجعل كل أيامك فرحة.
+        <br><br>
+        حابب أشكر حضرتك على كل المجهود اللي بتعمليه معانا،<br>
+        وعلى صبرك واهتمامك، لأن مش أي مدرس بيقدر يسيب أثر حلو<br>
+        في طلابه، لكن حضرتك قدرتي تعملي ده..
+        <br><br>
+        أتمنى السنة دي تكون بداية لأحلام جديدة تتحقق، وربنا يرزقك<br>
+        السعادة والتوفيق في كل خطوة، ويجازيكي خير على كل تعب<br>
+        ومجهود بذلتيه معانا. وجود حضرتك في حياتنا التعليمية نعمة،<br>
+        وإن شاء الله تفضلي دايمًا ناجحة ومتميزة.
+        <br><br>
+        كل سنة وحضرتك منورة حياة كل اللي حواليكي، وربنا يديم<br>
+        عليكي الصحة والعافية، ويكتبلك الخير أينما كان، ويجعل<br>
+        أيامك كلها أفراح ونجاحات.
+        <br><br>
+        عيد ميلاد سعيد، وعقبال 100 سنة في سعادة وراحة بال،<br>
+        وإن شاء الله أشوف حضرتك دايمًا مبتسمة ومحققة كل اللي<br>
+        نفسك فيه. كل سنة وحضرتك بخير
+    </div>
   </div>
 
   <!-- Bottom Quote -->
