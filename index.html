@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Luxury Birthday Card — Teacher</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Sans+Arabic:wght@200..900&display=swap" rel="stylesheet">
 <style>
@@ -30,33 +30,19 @@
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    height: 100svh;
-    padding: 16px;
+    min-height: 100svh;
+    padding: 20px;
     box-sizing: border-box;
-    overflow: hidden;
     z-index: 1;
   }
-  .card-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: 2%;
-    left: 50%;
-    width: 65%;
-    height: 4%;
-    transform: translateX(-50%);
-    background: radial-gradient(ellipse, rgba(0,0,0,0.45) 0%, transparent 70%);
-    filter: blur(10px);
-    z-index: 0;
-    pointer-events: none;
-  }
 
-  /* ───── CARD ───── */
   .card {
     position: relative;
     width: 210mm;
-    height: 297mm;
+    max-width: 100%;
+    aspect-ratio: 210 / 297;
     overflow: hidden;
     background: #f8f6f1;
     box-shadow:
@@ -64,12 +50,11 @@
       0 8px 24px rgba(0,0,0,0.12),
       0 32px 64px rgba(0,0,0,0.18),
       0 60px 100px rgba(0,0,0,0.3);
-    transform-origin: center center;
+    border-radius: 2px;
     flex-shrink: 0;
-    z-index: 1;
   }
 
-  /* ───── MARBLE ───── */
+  /* ── MARBLE ── */
   .marble-bg {
     position: absolute;
     inset: 0;
@@ -80,15 +65,22 @@
       linear-gradient(170deg, #fcfaf6 0%, #f7f3ec 30%, #f2ede4 55%, #f6f1e9 80%, #faf6ef 100%);
     z-index: 0;
   }
-  .marble-texture {
+
+  /* All internal elements use % relative to .card */
+  .card-inner {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .marble-veins {
     position: absolute;
     inset: 0;
     z-index: 0;
     opacity: 0.12;
   }
-  .marble-texture svg { width: 100%; height: 100%; }
+  .marble-veins svg { width: 100%; height: 100%; }
 
-  /* ───── PAPER GRAIN ───── */
   .paper-grain {
     position: absolute;
     inset: 0;
@@ -99,7 +91,6 @@
   }
   .paper-grain svg { width: 100%; height: 100%; }
 
-  /* ───── CINEMATIC GLOW ───── */
   .glow-overlay {
     position: absolute;
     inset: 0;
@@ -110,7 +101,6 @@
       radial-gradient(ellipse at 50% 75%, rgba(255,200,150,0.05) 0%, transparent 40%);
   }
 
-  /* ───── BOKEH ───── */
   .bokeh {
     position: absolute;
     inset: 0;
@@ -120,103 +110,90 @@
   }
   .bokeh svg { width: 100%; height: 100%; }
 
-  /* ───── GOLD FOIL BORDER ───── */
   .gold-border-outer {
     position: absolute;
-    top: 10mm; left: 10mm; right: 10mm; bottom: 10mm;
+    top: 4.76%; left: 4.76%; right: 4.76%; bottom: 4.76%;
     border: 2.5px solid;
     border-image: linear-gradient(135deg, #f5e6a3, #d4af37, #c8a84e, #f5e6a3, #b8860b) 1;
     z-index: 4;
     pointer-events: none;
-    box-shadow:
-      0 0 12px rgba(212,175,55,0.08),
-      inset 0 0 12px rgba(212,175,55,0.04);
+    box-shadow: 0 0 12px rgba(212,175,55,0.08), inset 0 0 12px rgba(212,175,55,0.04);
   }
   .gold-border-inner {
     position: absolute;
-    top: 13.5mm; left: 13.5mm; right: 13.5mm; bottom: 13.5mm;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    top: 6.43%; left: 6.43%; right: 6.43%; bottom: 6.43%;
+    border: 1px solid rgba(212,175,55,0.2);
     z-index: 4;
     pointer-events: none;
     box-shadow: inset 0 0 6px rgba(212,175,55,0.03);
   }
 
-  /* ───── CORNER ORNAMENTS (minimal) ───── */
   .corner {
     position: absolute;
-    width: 28mm;
-    height: 28mm;
+    width: 13%;
+    height: 9.4%;
     z-index: 5;
     pointer-events: none;
   }
   .corner svg { width: 100%; height: 100%; overflow: visible; }
-  .corner-tl { top: 8mm; left: 8mm; }
-  .corner-tr { top: 8mm; right: 8mm; transform: scaleX(-1); }
-  .corner-bl { bottom: 8mm; left: 8mm; transform: scaleY(-1); }
-  .corner-br { bottom: 8mm; right: 8mm; transform: scale(-1, -1); }
+  .corner-tl { top: 3.8%; left: 3.8%; }
+  .corner-tr { top: 3.8%; right: 3.8%; transform: scaleX(-1); }
+  .corner-bl { bottom: 3.8%; left: 3.8%; transform: scaleY(-1); }
+  .corner-br { bottom: 3.8%; right: 3.8%; transform: scale(-1, -1); }
 
-  /* ───── RIBBON ACCENTS ───── */
   .ribbon {
     position: absolute;
     z-index: 4;
     pointer-events: none;
   }
   .ribbon svg { width: 100%; height: 100%; }
-  .ribbon-top { top: 0; left: 0; width: 100%; height: 6mm; opacity: 0.25; }
-  .ribbon-bottom { bottom: 0; left: 0; width: 100%; height: 6mm; opacity: 0.25; transform: scaleY(-1); }
+  .ribbon-top { top: 0; left: 0; width: 100%; height: 2%; opacity: 0.25; }
+  .ribbon-bottom { bottom: 0; left: 0; width: 100%; height: 2%; opacity: 0.25; transform: scaleY(-1); }
 
-  /* ───── WATERMARK EMBLEM ───── */
   .emblem {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 90mm;
-    height: 90mm;
+    width: 43%;
+    height: 30%;
     z-index: 0;
     pointer-events: none;
     opacity: 0.04;
   }
   .emblem svg { width: 100%; height: 100%; filter: drop-shadow(0 0 8px rgba(212,175,55,0.1)); }
 
-  /* ───── FLOWERS (top-left & bottom-right only) ───── */
   .flower {
     position: absolute;
     z-index: 4;
     pointer-events: none;
   }
   .flower svg { width: 100%; height: 100%; overflow: visible; }
-  .flower-tl { top: 2mm; left: 2mm; width: 80mm; height: 80mm; opacity: 0.5; }
-  .flower-br { bottom: 2mm; right: 2mm; width: 85mm; height: 85mm; opacity: 0.55; }
+  .flower-tl { top: 1%; left: 1%; width: 38%; height: 27%; opacity: 0.5; }
+  .flower-br { bottom: 1%; right: 1%; width: 40%; height: 28%; opacity: 0.55; }
 
-  /* ───── GOLDEN FOUNTAIN PEN ───── */
   .pen {
     position: absolute;
-    bottom: 68mm;
-    right: 18mm;
+    bottom: 23%; right: 8.5%;
     z-index: 5;
     pointer-events: none;
-    width: 35mm;
-    height: 35mm;
+    width: 16.5%;
+    height: 12%;
     opacity: 0.2;
     transform: rotate(-25deg);
   }
   .pen svg { width: 100%; height: 100%; }
 
-  /* ───── OPEN ACADEMIC BOOK ───── */
   .book {
     position: absolute;
-    bottom: 18mm;
-    left: 18mm;
+    bottom: 6%; left: 8.5%;
     z-index: 5;
     pointer-events: none;
-    width: 45mm;
-    height: 38mm;
+    width: 21%;
+    height: 13%;
     opacity: 0.1;
   }
   .book svg { width: 100%; height: 100%; }
 
-  /* ───── GOLD STARS ───── */
   .star {
     position: absolute;
     z-index: 4;
@@ -224,39 +201,60 @@
     opacity: 0.45;
   }
   .star svg { width: 100%; height: 100%; overflow: visible; }
-  .star-1 { top: 48mm; left: 26mm; width: 6mm; height: 6mm; }
-  .star-2 { top: 58mm; right: 30mm; width: 4.5mm; height: 4.5mm; }
-  .star-3 { top: 110mm; left: 20mm; width: 5mm; height: 5mm; }
-  .star-4 { bottom: 120mm; right: 22mm; width: 6.5mm; height: 6.5mm; }
-  .star-5 { bottom: 90mm; left: 28mm; width: 3.5mm; height: 3.5mm; }
-  .star-6 { top: 75mm; right: 52%; width: 4mm; height: 4mm; opacity: 0.3; }
+  .star-1 { top: 16%; left: 12.4%; width: 2.8%; height: 2%; }
+  .star-2 { top: 19.5%; right: 14.3%; width: 2.1%; height: 1.5%; }
+  .star-3 { top: 37%; left: 9.5%; width: 2.4%; height: 1.7%; }
+  .star-4 { bottom: 40.5%; right: 10.5%; width: 3.1%; height: 2.2%; }
+  .star-5 { bottom: 30%; left: 13.3%; width: 1.7%; height: 1.2%; }
+  .star-6 { top: 25%; right: 52%; width: 1.9%; height: 1.35%; opacity: 0.3; }
 
-  /* ───── GLASSMORPHISM CENTER PANEL ───── */
+  .top-text {
+    position: absolute;
+    top: 8.8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    text-align: center;
+    pointer-events: none;
+  }
+  .top-text .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9%;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(160,145,130,0.5);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+  .top-text .separator {
+    width: 14%;
+    height: 0.5px;
+    margin: 2mm auto 0;
+    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.25), transparent);
+  }
+
   .glass-panel {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     z-index: 6;
-    width: 120mm;
-    min-height: 120mm;
-    max-height: 190mm;
-    background: rgba(255, 255, 252, 0.55);
+    width: 57%;
+    min-height: 30%;
+    max-height: 60%;
+    background: rgba(255,255,252,0.55);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212,175,55,0.2);
     border-radius: 2mm;
-    box-shadow:
-      0 4px 24px rgba(0,0,0,0.04),
-      0 1px 4px rgba(212,175,55,0.06),
-      inset 0 0 30px rgba(255,255,252,0.5);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.04), 0 1px 4px rgba(212,175,55,0.06), inset 0 0 30px rgba(255,255,252,0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 16mm 14mm;
+    padding: 5%;
     text-align: center;
     pointer-events: none;
+    overflow: hidden;
   }
   .glass-panel::before {
     content: '';
@@ -268,60 +266,32 @@
   }
   .glass-panel .empty-label {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 7mm;
+    font-size: 3.4%;
     font-weight: 300;
     font-style: italic;
-    color: rgba(180, 160, 120, 0.4);
+    color: rgba(180,160,120,0.4);
     letter-spacing: 2px;
     text-shadow: 0 1px 2px rgba(255,255,255,0.3);
   }
   .glass-panel .divider-line {
-    width: 40mm;
+    width: 35%;
     height: 0.5px;
-    margin: 6mm 0;
+    margin: 5% 0;
     background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
     opacity: 0.4;
   }
   .glass-panel .sub-label {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 4.5mm;
+    font-size: 2.3%;
     font-weight: 300;
-    color: rgba(140, 125, 110, 0.3);
+    color: rgba(140,125,110,0.3);
     letter-spacing: 3px;
     text-transform: uppercase;
   }
 
-  /* ───── TOP MINIMAL TEXT ───── */
-  .top-text {
-    position: absolute;
-    top: 26mm;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 6;
-    text-align: center;
-    pointer-events: none;
-  }
-  .top-text .sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4mm;
-    font-weight: 300;
-    font-style: italic;
-    color: rgba(160, 145, 130, 0.5);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 3mm;
-  }
-  .top-text .separator {
-    width: 30mm;
-    height: 0.5px;
-    margin: 2mm auto;
-    background: linear-gradient(90deg, transparent, rgba(212,175,55,0.25), transparent);
-  }
-
-  /* ───── BOTTOM QUOTE ───── */
   .bottom-text {
     position: absolute;
-    bottom: 24mm;
+    bottom: 8%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 6;
@@ -330,28 +300,32 @@
   }
   .bottom-text .quote {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 4.5mm;
+    font-size: 2.2%;
     font-style: italic;
-    color: rgba(140, 125, 110, 0.35);
+    color: rgba(140,125,110,0.35);
     letter-spacing: 1.5px;
     font-weight: 300;
-    max-width: 120mm;
+    width: 60%;
+    margin: 0 auto;
   }
 
-  /* ───── RESPONSIVE ───── */
   @media screen and (max-width: 850px) {
-    .card-wrapper { padding: 8px; align-items: flex-start; padding-top: 16px; }
+    .card-wrapper { padding: 12px; align-items: flex-start; padding-top: 12px; }
   }
   @media screen and (max-width: 500px) {
-    .card-wrapper { padding: 4px; padding-top: 10px; }
+    .card-wrapper { padding: 6px; padding-top: 8px; }
+    .glass-panel { width: 52%; }
+    .glass-panel .empty-label { font-size: 2.8%; }
+    .glass-panel .sub-label { font-size: 1.8%; }
+    .top-text .sub { font-size: 1.5%; }
+    .bottom-text .quote { font-size: 1.8%; width: 55%; }
   }
 
   @media print {
     body { background: white; margin: 0; }
     body::before { display: none; }
     .card-wrapper { display: block; padding: 0; min-height: auto; }
-    .card-wrapper::after { display: none; }
-    .card { box-shadow: none; margin: 0 auto; }
+    .card { box-shadow: none; margin: 0 auto; max-width: 100%; }
   }
 </style>
 </head>
@@ -360,9 +334,10 @@
 <div class="card-wrapper">
 <div class="card">
 
-  <!-- ── MARBLE TEXTURE ── -->
+  <!-- Background layers -->
   <div class="marble-bg"></div>
-  <div class="marble-texture">
+
+  <div class="marble-veins">
     <svg viewBox="0 0 2100 2970" preserveAspectRatio="none">
       <defs>
         <filter id="marble-noise">
@@ -405,7 +380,6 @@
     </svg>
   </div>
 
-  <!-- ── PAPER GRAIN ── -->
   <div class="paper-grain">
     <svg viewBox="0 0 2100 2970" preserveAspectRatio="none">
       <filter id="grain">
@@ -417,10 +391,8 @@
     </svg>
   </div>
 
-  <!-- ── GLOW ── -->
   <div class="glow-overlay"></div>
 
-  <!-- ── BOKEH ── -->
   <div class="bokeh">
     <svg viewBox="0 0 2100 2970">
       <circle cx="350" cy="250" r="18" fill="none" stroke="rgba(212,175,55,0.06)" stroke-width="1.5">
@@ -444,7 +416,6 @@
     </svg>
   </div>
 
-  <!-- ── EMBLEM ── -->
   <div class="emblem">
     <svg viewBox="0 0 100 100">
       <circle cx="50" cy="50" r="48" fill="none" stroke="url(#gold-metallic)" stroke-width="0.5" opacity="0.7"/>
@@ -456,11 +427,9 @@
     </svg>
   </div>
 
-  <!-- ── BORDERS ── -->
   <div class="gold-border-outer"></div>
   <div class="gold-border-inner"></div>
 
-  <!-- ── CORNERS ── -->
   <div class="corner corner-tl">
     <svg viewBox="0 0 120 120">
       <path d="M2,2 L75,2 Q95,2 100,12 Q105,22 92,28 Q80,34 86,46 Q90,55 80,62" stroke="url(#gold-metallic)" stroke-width="2" fill="none" filter="url(#emboss-shadow)"/>
@@ -494,7 +463,6 @@
     </svg>
   </div>
 
-  <!-- ── RIBBONS ── -->
   <div class="ribbon ribbon-top">
     <svg viewBox="0 0 2100 60" preserveAspectRatio="none">
       <defs>
@@ -519,7 +487,7 @@
     </svg>
   </div>
 
-  <!-- ── FLOWERS: TOP-LEFT ── -->
+  <!-- Flowers: Top-Left -->
   <div class="flower flower-tl">
     <svg viewBox="0 0 100 100">
       <defs>
@@ -542,7 +510,6 @@
           <stop offset="100%" stop-color="#b8860b"/>
         </radialGradient>
       </defs>
-      <!-- Rose -->
       <ellipse cx="38" cy="40" rx="18" ry="22" fill="url(#rose-lt)" transform="rotate(-50,38,40)" opacity="0.5"/>
       <ellipse cx="38" cy="40" rx="18" ry="22" fill="url(#rose-lt)" transform="rotate(-10,38,40)" opacity="0.5"/>
       <ellipse cx="38" cy="40" rx="18" ry="22" fill="url(#rose-lt)" transform="rotate(30,38,40)" opacity="0.5"/>
@@ -556,7 +523,6 @@
       <path d="M36,38 Q38,35 40,38 Q42,40 39,42 Q37,44 35,42 Q34,40 36,38" fill="none" stroke="url(#rose-gold)" stroke-width="0.4" opacity="0.4"/>
       <circle cx="38" cy="39" r="2" fill="url(#rose-gold)" opacity="0.35"/>
       <ellipse cx="35" cy="36" rx="3" ry="2" fill="white" opacity="0.12" transform="rotate(-15,35,36)"/>
-      <!-- Peony -->
       <ellipse cx="68" cy="52" rx="20" ry="24" fill="url(#peony-lt)" transform="rotate(-40,68,52)" opacity="0.35"/>
       <ellipse cx="68" cy="52" rx="20" ry="24" fill="url(#peony-lt)" transform="rotate(20,68,52)" opacity="0.35"/>
       <ellipse cx="68" cy="52" rx="20" ry="24" fill="url(#peony-lt)" transform="rotate(80,68,52)" opacity="0.35"/>
@@ -569,7 +535,6 @@
       <ellipse cx="68" cy="52" rx="9" ry="12" fill="url(#peony-lt)" transform="rotate(140,68,52)" opacity="0.6"/>
       <circle cx="68" cy="52" r="4" fill="url(#rose-gold)" opacity="0.3"/>
       <circle cx="68" cy="52" r="2" fill="#d4af37" opacity="0.2"/>
-      <!-- Baby's breath -->
       <circle cx="20" cy="52" r="2.5" fill="white" opacity="0.4"/>
       <circle cx="16" cy="48" r="2" fill="white" opacity="0.35"/>
       <circle cx="24" cy="55" r="1.5" fill="white" opacity="0.3"/>
@@ -579,7 +544,6 @@
       <line x1="20" y1="52" x2="16" y2="60" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
       <line x1="55" y1="28" x2="50" y2="22" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
       <line x1="50" y1="68" x2="46" y2="74" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
-      <!-- Leaves -->
       <ellipse cx="26" cy="62" rx="10" ry="4" fill="#c8d6b0" opacity="0.3" transform="rotate(-30,26,62)"/>
       <ellipse cx="52" cy="74" rx="8" ry="3.5" fill="#c8d6b0" opacity="0.25" transform="rotate(20,52,74)"/>
       <ellipse cx="78" cy="68" rx="9" ry="3.5" fill="#c8d6b0" opacity="0.25" transform="rotate(40,78,68)"/>
@@ -587,7 +551,7 @@
     </svg>
   </div>
 
-  <!-- ── FLOWERS: BOTTOM-RIGHT ── -->
+  <!-- Flowers: Bottom-Right -->
   <div class="flower flower-br">
     <svg viewBox="0 0 100 100">
       <defs>
@@ -609,7 +573,6 @@
           <stop offset="100%" stop-color="#b8860b"/>
         </radialGradient>
       </defs>
-      <!-- Large Peony -->
       <ellipse cx="62" cy="40" rx="22" ry="26" fill="url(#peony-br)" transform="rotate(-45,62,40)" opacity="0.35"/>
       <ellipse cx="62" cy="40" rx="22" ry="26" fill="url(#peony-br)" transform="rotate(15,62,40)" opacity="0.35"/>
       <ellipse cx="62" cy="40" rx="22" ry="26" fill="url(#peony-br)" transform="rotate(75,62,40)" opacity="0.35"/>
@@ -622,7 +585,6 @@
       <ellipse cx="62" cy="40" rx="10" ry="14" fill="url(#peony-br)" transform="rotate(130,62,40)" opacity="0.6"/>
       <circle cx="62" cy="40" r="4.5" fill="url(#rose-gold-br)" opacity="0.3"/>
       <circle cx="62" cy="40" r="2" fill="#d4af37" opacity="0.2"/>
-      <!-- Rose -->
       <ellipse cx="32" cy="55" rx="16" ry="20" fill="url(#rose-br)" transform="rotate(-30,32,55)" opacity="0.45"/>
       <ellipse cx="32" cy="55" rx="16" ry="20" fill="url(#rose-br)" transform="rotate(30,32,55)" opacity="0.45"/>
       <ellipse cx="32" cy="55" rx="16" ry="20" fill="url(#rose-br)" transform="rotate(90,32,55)" opacity="0.45"/>
@@ -633,7 +595,6 @@
       <circle cx="32" cy="55" r="3.5" fill="url(#rose-gold-br)" opacity="0.35"/>
       <circle cx="32" cy="55" r="1.5" fill="#d4af37" opacity="0.25"/>
       <ellipse cx="29" cy="51" rx="2.5" ry="1.5" fill="white" opacity="0.1"/>
-      <!-- Baby's breath -->
       <circle cx="78" cy="26" r="2.5" fill="white" opacity="0.35"/>
       <circle cx="82" cy="30" r="2" fill="white" opacity="0.3"/>
       <circle cx="75" cy="22" r="1.5" fill="white" opacity="0.25"/>
@@ -645,7 +606,6 @@
       <line x1="20" y1="38" x2="16" y2="32" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
       <line x1="85" y1="50" x2="88" y2="56" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
       <line x1="45" y1="72" x2="40" y2="76" stroke="#a8b890" stroke-width="0.4" opacity="0.2"/>
-      <!-- Leaves -->
       <ellipse cx="48" cy="72" rx="10" ry="4" fill="#c8d6b0" opacity="0.25" transform="rotate(25,48,72)"/>
       <ellipse cx="20" cy="60" rx="8" ry="3" fill="#c8d6b0" opacity="0.2" transform="rotate(-40,20,60)"/>
       <ellipse cx="80" cy="60" rx="9" ry="3.5" fill="#c8d6b0" opacity="0.2" transform="rotate(30,80,60)"/>
@@ -653,7 +613,7 @@
     </svg>
   </div>
 
-  <!-- ── FOUNTAIN PEN ── -->
+  <!-- Pen -->
   <div class="pen">
     <svg viewBox="0 0 100 100">
       <defs>
@@ -670,26 +630,20 @@
           <stop offset="100%" stop-color="#8a6e10"/>
         </linearGradient>
       </defs>
-      <!-- Barrel -->
       <rect x="20" y="38" width="60" height="8" rx="2" fill="url(#pen-body)" opacity="0.8"/>
       <rect x="22" y="42" width="56" height="2" fill="#b8860b" opacity="0.3"/>
-      <!-- Cap / finial -->
       <rect x="15" y="36" width="8" height="12" rx="1.5" fill="url(#pen-body)" opacity="0.7"/>
       <circle cx="19" cy="36" r="2.5" fill="url(#pen-body)" opacity="0.6"/>
-      <!-- Nib -->
       <path d="M80,42 L92,48 L80,52 Z" fill="url(#pen-nib)" opacity="0.7"/>
       <line x1="80" y1="42" x2="90" y2="48" stroke="#f5e6a3" stroke-width="0.3" opacity="0.4"/>
       <line x1="80" y1="52" x2="90" y2="48" stroke="#f5e6a3" stroke-width="0.3" opacity="0.4"/>
-      <!-- Ink dot -->
       <circle cx="93" cy="48" r="1" fill="#1a1a2e" opacity="0.3"/>
-      <!-- Clip -->
       <rect x="18" y="30" width="3" height="20" rx="1" fill="url(#pen-body)" opacity="0.5"/>
-      <!-- Shine -->
       <rect x="25" y="39" width="20" height="1.5" rx="0.5" fill="white" opacity="0.15"/>
     </svg>
   </div>
 
-  <!-- ── OPEN BOOK ── -->
+  <!-- Book -->
   <div class="book">
     <svg viewBox="0 0 100 90">
       <defs>
@@ -704,18 +658,13 @@
           <stop offset="100%" stop-color="#faf8f3"/>
         </linearGradient>
       </defs>
-      <!-- Left page -->
       <path d="M50,80 L50,10 L8,16 L8,86 Z" fill="url(#book-page)" opacity="0.7"/>
-      <!-- Right page -->
       <path d="M50,80 L50,10 L92,16 L92,86 Z" fill="url(#book-page)" opacity="0.65"/>
-      <!-- Spine -->
       <line x1="50" y1="10" x2="50" y2="80" stroke="url(#book-cover)" stroke-width="1.5" opacity="0.5"/>
-      <!-- Cover edges -->
       <path d="M50,10 L8,16" stroke="url(#book-cover)" stroke-width="1.5" fill="none" opacity="0.4"/>
       <path d="M50,10 L92,16" stroke="url(#book-cover)" stroke-width="1.5" fill="none" opacity="0.4"/>
       <path d="M50,80 L8,86" stroke="url(#book-cover)" stroke-width="1.5" fill="none" opacity="0.4"/>
       <path d="M50,80 L92,86" stroke="url(#book-cover)" stroke-width="1.5" fill="none" opacity="0.4"/>
-      <!-- Text lines -->
       <line x1="18" y1="28" x2="44" y2="24" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
       <line x1="18" y1="36" x2="44" y2="32" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
       <line x1="18" y1="44" x2="44" y2="40" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
@@ -724,82 +673,39 @@
       <line x1="56" y1="32" x2="82" y2="36" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
       <line x1="56" y1="40" x2="82" y2="44" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
       <line x1="56" y1="48" x2="82" y2="52" stroke="#c8b89a" stroke-width="0.4" opacity="0.15"/>
-      <!-- Gold corner accents -->
       <circle cx="10" cy="18" r="1.5" fill="url(#book-cover)" opacity="0.3"/>
       <circle cx="90" cy="18" r="1.5" fill="url(#book-cover)" opacity="0.3"/>
     </svg>
   </div>
 
-  <!-- ── STARS ── -->
-  <div class="star star-1">
-    <svg viewBox="0 0 12 12">
-      <polygon points="6,0 7.8,4.2 12,4.8 9,7.8 9.6,12 6,9.6 2.4,12 3,7.8 0,4.8 4.2,4.2" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/>
-    </svg>
-  </div>
-  <div class="star star-2">
-    <svg viewBox="0 0 10 10">
-      <polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/>
-    </svg>
-  </div>
-  <div class="star star-3">
-    <svg viewBox="0 0 10 10">
-      <polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/>
-    </svg>
-  </div>
-  <div class="star star-4">
-    <svg viewBox="0 0 10 10">
-      <polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/>
-    </svg>
-  </div>
-  <div class="star star-5">
-    <svg viewBox="0 0 10 10">
-      <polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/>
-    </svg>
-  </div>
-  <div class="star star-6">
-    <svg viewBox="0 0 8 8">
-      <polygon points="4,0 5.2,3 8,3.5 6,5.5 6.2,8.5 4,6.5 1.8,8.5 2,5.5 0,3.5 2.8,3" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/>
-    </svg>
-  </div>
+  <!-- Stars -->
+  <div class="star star-1"><svg viewBox="0 0 12 12"><polygon points="6,0 7.8,4.2 12,4.8 9,7.8 9.6,12 6,9.6 2.4,12 3,7.8 0,4.8 4.2,4.2" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
+  <div class="star star-2"><svg viewBox="0 0 10 10"><polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
+  <div class="star star-3"><svg viewBox="0 0 10 10"><polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
+  <div class="star star-4"><svg viewBox="0 0 10 10"><polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
+  <div class="star star-5"><svg viewBox="0 0 10 10"><polygon points="5,0 6.5,3.5 10,4 7.5,7 8,10.5 5,8.5 2,10.5 2.5,7 0,4 3.5,3.5" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
+  <div class="star star-6"><svg viewBox="0 0 8 8"><polygon points="4,0 5.2,3 8,3.5 6,5.5 6.2,8.5 4,6.5 1.8,8.5 2,5.5 0,3.5 2.8,3" fill="url(#gold-metallic)" filter="url(#emboss-shadow)"/></svg></div>
 
-  <!-- ── TOP TEXT (decorative) ── -->
+  <!-- Top Text -->
   <div class="top-text">
     <div class="sub">Celebrating You</div>
     <div class="separator"></div>
   </div>
 
-  <!-- ── GLASSMORPHISM CENTER PANEL (EMPTY — for Arabic text) ── -->
+  <!-- Glassmorphism Panel (EMPTY — for Arabic) -->
   <div class="glass-panel">
     <div class="empty-label">Your Message Here</div>
     <div class="divider-line"></div>
     <div class="sub-label">Personal Message</div>
   </div>
 
-  <!-- ── BOTTOM QUOTE ── -->
+  <!-- Bottom Quote -->
   <div class="bottom-text">
     <div class="quote">"To educate is to inspire a soul that will never forget."</div>
   </div>
 
 </div>
 </div>
-
-<!-- ── MOBILE SCALING ── -->
-<script>
-(function() {
-  function scaleCard() {
-    var card = document.querySelector('.card');
-    if (!card) return;
-    var ww = window.innerWidth, wh = window.innerHeight;
-    var pad = ww > 850 ? 32 : (ww > 500 ? 16 : 8);
-    var nw = 210 / 25.4 * 96, nh = 297 / 25.4 * 96;
-    var s = Math.min((ww - pad * 2) / nw, (wh - pad * 2) / nh, 1);
-    card.style.transform = s < 1 ? 'scale(' + s + ')' : '';
-  }
-  scaleCard();
-  var t;
-  window.addEventListener('resize', function() { clearTimeout(t); t = setTimeout(scaleCard, 100); });
-})();
-</script>
 
 </body>
 </html>
