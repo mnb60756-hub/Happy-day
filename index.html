@@ -122,8 +122,10 @@
     z-index: 1;
     pointer-events: none;
     background:
-      radial-gradient(ellipse at 50% 22%, rgba(255,215,150,0.12) 0%, transparent 45%),
-      radial-gradient(ellipse at 50% 70%, rgba(255,200,150,0.06) 0%, transparent 40%);
+      radial-gradient(ellipse at 50% 20%, rgba(255,220,160,0.15) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 75%, rgba(255,210,150,0.08) 0%, transparent 40%),
+      radial-gradient(ellipse at 20% 50%, rgba(255,248,220,0.04) 0%, transparent 30%),
+      radial-gradient(ellipse at 80% 50%, rgba(255,248,220,0.04) 0%, transparent 30%);
   }
 
   /* ΓöÇΓöÇ Gold Glow Behind Title ΓöÇΓöÇ */
@@ -136,7 +138,7 @@
     transform: translate(-50%, -85%);
     z-index: 1;
     pointer-events: none;
-    background: radial-gradient(ellipse, rgba(212,175,55,0.08) 0%, rgba(245,230,163,0.04) 40%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(212,175,55,0.12) 0%, rgba(245,230,163,0.06) 35%, transparent 70%);
     filter: blur(20px);
   }
 
@@ -147,7 +149,11 @@
     border: 2px solid rgba(212, 175, 55, 0.5);
     z-index: 2;
     pointer-events: none;
-    box-shadow: 0 0 8px rgba(212,175,55,0.08), inset 0 0 8px rgba(212,175,55,0.05);
+    box-shadow:
+      0 0 12px rgba(212,175,55,0.1),
+      inset 0 0 12px rgba(212,175,55,0.06),
+      inset 0 0 0 1px rgba(255,248,220,0.08);
+    border-image: linear-gradient(135deg, rgba(245,230,163,0.4), rgba(212,175,55,0.5), rgba(200,168,78,0.5), rgba(245,230,163,0.4)) 1;
   }
   .gold-border-inner {
     position: absolute;
@@ -155,7 +161,7 @@
     border: 1px solid rgba(212, 175, 55, 0.25);
     z-index: 2;
     pointer-events: none;
-    box-shadow: inset 0 0 4px rgba(212,175,55,0.04);
+    box-shadow: inset 0 0 6px rgba(212,175,55,0.05);
   }
 
   /* ΓöÇΓöÇ Filigree Corners ΓöÇΓöÇ */
@@ -215,16 +221,17 @@
     position: relative;
     text-rendering: optimizeLegibility;
     text-shadow:
-      0 0 80px rgba(212,175,55,0.2),
-      0 1px 2px rgba(255,248,220,0.6),
-      0 2px 4px rgba(0,0,0,0.1),
-      0 4px 12px rgba(212,175,55,0.1),
-      0 -0.5px 0 rgba(255,248,220,0.3);
-    background-image: linear-gradient(180deg, #fff8dc 0%, #f5e6a3 15%, #e8c84a 30%, #d4af37 45%, #c8a84e 60%, #b8962e 75%, #c8a84e 85%, #e8c84a 100%);
+      0 0 100px rgba(212,175,55,0.25),
+      0 1px 2px rgba(255,248,220,0.7),
+      0 2px 4px rgba(0,0,0,0.12),
+      0 4px 15px rgba(212,175,55,0.12),
+      0 -0.5px 1px rgba(255,248,220,0.4),
+      0 0.5px 0 rgba(212,175,55,0.15);
+    background-image: linear-gradient(180deg, #fff8dc 0%, #ffeeb0 10%, #f5e6a3 20%, #e8c84a 32%, #d4af37 45%, #c8a84e 58%, #b8962e 70%, #c8a84e 82%, #e8c84a 92%, #f5e6a3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 2px 4px rgba(180,150,40,0.18));
+    filter: drop-shadow(0 2px 4px rgba(180,150,40,0.2));
   }
   @supports not (background-clip: text) {
     .title-en {
@@ -247,7 +254,7 @@
     font-size: 4.3mm;
     font-weight: 450;
     color: #2a1f18;
-    line-height: 1.75;
+    line-height: 1.92;
     margin: 5mm 0 2mm;
     max-width: 86%;
     text-shadow: 0 1px 2px rgba(0,0,0,0.04);
@@ -269,12 +276,12 @@
     font-family: 'Cormorant Garamond', 'Playfair Display', serif;
     font-size: 4.5mm;
     font-style: italic;
-    color: #c8a84e;
+    color: #a08860;
     letter-spacing: 1.5px;
     margin-top: 1mm;
     margin-bottom: 0;
     font-weight: 400;
-    opacity: 0.7;
+    opacity: 0.85;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -307,15 +314,16 @@
   }
   .sig-name {
     font-family: 'Great Vibes', 'Brush Script MT', cursive;
-    font-size: 6mm;
+    font-size: 6.6mm;
     font-weight: 400;
-    color: #8a7050;
-    opacity: 0.7;
+    color: #7a5a3a;
+    opacity: 0.8;
     letter-spacing: 1px;
     line-height: 1;
     margin-top: -1mm;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    filter: drop-shadow(0 0.5px 1px rgba(0,0,0,0.06));
   }
 
   .gold-emblem {
@@ -342,9 +350,9 @@
     pointer-events: none;
   }
   .balloon-group svg { width: 100%; height: 100%; }
-  .balloon-1 { top: 24mm; right: 30mm; width: 28mm; height: 50mm; opacity: 0.65; }
-  .balloon-2 { top: 18mm; right: 56mm; width: 22mm; height: 40mm; opacity: 0.5; }
-  .balloon-3 { top: 30mm; right: 44mm; width: 18mm; height: 32mm; opacity: 0.4; }
+  .balloon-1 { top: 24mm; right: 30mm; width: 28mm; height: 50mm; opacity: 0.75; }
+  .balloon-2 { top: 18mm; right: 56mm; width: 22mm; height: 40mm; opacity: 0.6; }
+  .balloon-3 { top: 30mm; right: 44mm; width: 18mm; height: 32mm; opacity: 0.5; }
 
   /* ΓöÇΓöÇ Flowers ΓöÇΓöÇ */
   .flower {
@@ -380,6 +388,7 @@
     z-index: 3;
     pointer-events: none;
     opacity: 0.55;
+    filter: drop-shadow(0 0 4px rgba(212,175,55,0.2));
   }
   .star svg { width: 100%; height: 100%; overflow: visible; }
   .star-1 { top: 42mm; left: 28mm; width: 7mm; height: 7mm; }
