@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday, Dear Miss</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Amiri:ital,wght@0,400;0,700&family=Noto+Sans+Arabic:wght@100..900&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
   @page { size: A4 portrait; margin: 0; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* ΓöÇΓöÇ Desk / Presentation Background ΓöÇΓöÇ */
+  /* ── Desk / Presentation Background ── */
   body {
     margin: 0;
     background:
@@ -18,9 +18,6 @@
       linear-gradient(180deg, #1a1511 0%, #2a231c 30%, #1e1813 60%, #0f0c09 100%);
     font-family: 'Noto Sans Arabic', 'Amiri', serif;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
   }
   body::before {
     content: '';
@@ -33,7 +30,7 @@
     z-index: 0;
   }
 
-  /* ΓöÇΓöÇ Responsive Card Wrapper ΓöÇΓöÇ */
+  /* ── Responsive Card Wrapper ── */
   .card-wrapper {
     position: relative;
     display: flex;
@@ -60,7 +57,7 @@
     pointer-events: none;
   }
 
-  /* ΓöÇΓöÇ Card Container ΓöÇΓöÇ */
+  /* ── Card Container ── */
   .card {
     position: relative;
     width: 210mm;
@@ -75,7 +72,6 @@
     transform-origin: center center;
     flex-shrink: 0;
     z-index: 1;
-    transition: transform 0.2s ease-out;
   }
   .card::after {
     content: '';
@@ -86,7 +82,7 @@
     box-shadow: inset 0 0 0 1px rgba(212,175,55,0.08);
   }
 
-  /* ΓöÇΓöÇ Marble Background ΓöÇΓöÇ */
+  /* ── Marble Background ── */
   .marble-bg {
     position: absolute;
     inset: 0;
@@ -104,7 +100,7 @@
   }
   .marble-veins svg { width: 100%; height: 100%; }
 
-  /* ΓöÇΓöÇ Paper Grain ΓöÇΓöÇ */
+  /* ── Paper Grain ── */
   .paper-grain {
     position: absolute;
     inset: 0;
@@ -115,20 +111,18 @@
   }
   .paper-grain svg { width: 100%; height: 100%; }
 
-  /* ΓöÇΓöÇ Cinematic Glow ΓöÇΓöÇ */
+  /* ── Cinematic Glow ── */
   .glow-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     pointer-events: none;
     background:
-      radial-gradient(ellipse at 50% 20%, rgba(255,220,160,0.15) 0%, transparent 45%),
-      radial-gradient(ellipse at 50% 75%, rgba(255,210,150,0.08) 0%, transparent 40%),
-      radial-gradient(ellipse at 20% 50%, rgba(255,248,220,0.04) 0%, transparent 30%),
-      radial-gradient(ellipse at 80% 50%, rgba(255,248,220,0.04) 0%, transparent 30%);
+      radial-gradient(ellipse at 50% 22%, rgba(255,215,150,0.12) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 70%, rgba(255,200,150,0.06) 0%, transparent 40%);
   }
 
-  /* ΓöÇΓöÇ Gold Glow Behind Title ΓöÇΓöÇ */
+  /* ── Gold Glow Behind Title ── */
   .title-glow {
     position: absolute;
     top: 50%;
@@ -138,22 +132,18 @@
     transform: translate(-50%, -85%);
     z-index: 1;
     pointer-events: none;
-    background: radial-gradient(ellipse, rgba(212,175,55,0.12) 0%, rgba(245,230,163,0.06) 35%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(212,175,55,0.08) 0%, rgba(245,230,163,0.04) 40%, transparent 70%);
     filter: blur(20px);
   }
 
-  /* ΓöÇΓöÇ Gold Borders ΓöÇΓöÇ */
+  /* ── Gold Borders ── */
   .gold-border-outer {
     position: absolute;
     top: 12mm; left: 12mm; right: 12mm; bottom: 12mm;
     border: 2px solid rgba(212, 175, 55, 0.5);
     z-index: 2;
     pointer-events: none;
-    box-shadow:
-      0 0 12px rgba(212,175,55,0.1),
-      inset 0 0 12px rgba(212,175,55,0.06),
-      inset 0 0 0 1px rgba(255,248,220,0.08);
-    border-image: linear-gradient(135deg, rgba(245,230,163,0.4), rgba(212,175,55,0.5), rgba(200,168,78,0.5), rgba(245,230,163,0.4)) 1;
+    box-shadow: 0 0 8px rgba(212,175,55,0.08), inset 0 0 8px rgba(212,175,55,0.05);
   }
   .gold-border-inner {
     position: absolute;
@@ -161,10 +151,10 @@
     border: 1px solid rgba(212, 175, 55, 0.25);
     z-index: 2;
     pointer-events: none;
-    box-shadow: inset 0 0 6px rgba(212,175,55,0.05);
+    box-shadow: inset 0 0 4px rgba(212,175,55,0.04);
   }
 
-  /* ΓöÇΓöÇ Filigree Corners ΓöÇΓöÇ */
+  /* ── Filigree Corners ── */
   .corner {
     position: absolute;
     width: 32mm;
@@ -178,7 +168,7 @@
   .corner-bl { bottom: 10mm; left: 10mm; transform: scaleY(-1); }
   .corner-br { bottom: 10mm; right: 10mm; transform: scale(-1, -1); }
 
-  /* ΓöÇΓöÇ Ribbon ΓöÇΓöÇ */
+  /* ── Ribbon ── */
   .ribbon {
     position: absolute;
     z-index: 2;
@@ -188,13 +178,13 @@
   .ribbon-top { top: 0; left: 0; width: 100%; height: 8mm; opacity: 0.35; }
   .ribbon-bottom { bottom: 0; left: 0; width: 100%; height: 8mm; opacity: 0.35; transform: scaleY(-1); }
 
-  /* ΓöÇΓöÇ Content ΓöÇΓöÇ */
+  /* ── Content ── */
   .content {
     position: relative;
     z-index: 4;
     width: 100%;
     height: 100%;
-    padding: 20mm 20mm 16mm;
+    padding: 32mm 20mm 26mm;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -202,36 +192,33 @@
     text-align: center;
   }
 
-  /* ΓöÇΓöÇ Top Ornament ΓöÇΓöÇ */
+  /* ── Top Ornament ── */
   .top-ornament {
-    margin-bottom: 5mm;
+    margin-bottom: 12mm;
     opacity: 0.5;
   }
   .top-ornament svg { width: 65mm; height: auto; }
 
-  /* ΓöÇΓöÇ English Title ΓöÇΓöÇ */
+  /* ── English Title ── */
   .title-en {
     font-family: 'Playfair Display', 'Cormorant Garamond', serif;
-    font-size: 14mm;
+    font-size: 14.5mm;
     font-weight: 700;
     color: #c8a84e;
-    letter-spacing: 4px;
-    line-height: 1.05;
-    margin-bottom: 1mm;
+    letter-spacing: 4.5px;
+    line-height: 1.2;
+    margin-bottom: 2mm;
     position: relative;
-    text-rendering: optimizeLegibility;
     text-shadow:
-      0 0 100px rgba(212,175,55,0.25),
-      0 1px 2px rgba(255,248,220,0.7),
-      0 2px 4px rgba(0,0,0,0.12),
-      0 4px 15px rgba(212,175,55,0.12),
-      0 -0.5px 1px rgba(255,248,220,0.4),
-      0 0.5px 0 rgba(212,175,55,0.15);
-    background-image: linear-gradient(180deg, #fff8dc 0%, #ffeeb0 10%, #f5e6a3 20%, #e8c84a 32%, #d4af37 45%, #c8a84e 58%, #b8962e 70%, #c8a84e 82%, #e8c84a 92%, #f5e6a3 100%);
+      0 0 50px rgba(212,175,55,0.15),
+      0 1px 1px rgba(255,248,220,0.5),
+      0 2px 3px rgba(0,0,0,0.08),
+      0 4px 8px rgba(212,175,55,0.06);
+    background-image: linear-gradient(180deg, #f5e6a3 0%, #d4af37 35%, #c8a84e 55%, #b8962e 75%, #a07820 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 2px 4px rgba(180,150,40,0.2));
+    filter: drop-shadow(0 2px 4px rgba(180,150,40,0.12));
   }
   @supports not (background-clip: text) {
     .title-en {
@@ -240,27 +227,25 @@
     }
   }
 
-  /* ΓöÇΓöÇ Divider ΓöÇΓöÇ */
+  /* ── Divider ── */
   .divider {
-    margin: 2mm 0;
+    margin: 5mm 0;
     opacity: 0.35;
     width: 55mm;
   }
   .divider svg { width: 100%; height: auto; }
 
-  /* ΓöÇΓöÇ Arabic Text ΓöÇΓöÇ */
+  /* ── Arabic Text ── */
   .title-ar {
     font-family: 'Noto Sans Arabic', 'Amiri', serif;
-    font-size: 4mm;
-    font-weight: 450;
-    color: #2a1f18;
-    line-height: 1.85;
-    margin: 3mm 0 1mm;
+    font-size: 3.6mm;
+    font-weight: 400;
+    color: #3d3229;
+    line-height: 2.15;
+    margin: 7mm 0 5mm;
     max-width: 86%;
     text-shadow: 0 1px 2px rgba(0,0,0,0.04);
     text-align: center;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
   }
   .title-ar .highlight {
     background: linear-gradient(135deg, #d4af37, #c8a84e, #b8962e);
@@ -271,69 +256,39 @@
     filter: drop-shadow(0 1px 2px rgba(180,150,40,0.12));
   }
 
-  /* ΓöÇΓöÇ Bottom Quote ΓöÇΓöÇ */
-  .text-divider {
-    margin: 2mm 0 1.5mm;
-    opacity: 0.5;
-    width: 50mm;
-  }
-  .text-divider svg { width: 100%; height: auto; display: block; }
-
-  .quote-gold {
+  /* ── Bottom Quote ── */
+  .bottom-quote {
     font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-    font-size: 4.8mm;
+    font-size: 5.5mm;
     font-style: italic;
-    color: #7a6040;
-    letter-spacing: 1.5px;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-weight: 500;
-    opacity: 0.9;
-    text-shadow: 0 0.5px 1px rgba(255,248,220,0.3);
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    color: #8a7a6a;
+    letter-spacing: 1.8px;
+    margin-top: 8mm;
+    font-weight: 300;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.03);
   }
-  .quote-gold .quote-mark {
-    font-size: 7mm;
-    color: #b8962e;
-    opacity: 0.3;
+  .bottom-quote::before {
+    content: '\201C';
+    font-size: 12mm;
+    color: #d4af37;
+    opacity: 0.2;
+    margin-left: 2mm;
     vertical-align: middle;
+    font-style: normal;
+    line-height: 0;
+  }
+  .bottom-quote::after {
+    content: '\201D';
+    font-size: 12mm;
+    color: #d4af37;
+    opacity: 0.2;
+    margin-right: 2mm;
+    vertical-align: bottom;
+    font-style: normal;
     line-height: 0;
   }
 
-  .signature-corner {
-    position: absolute;
-    bottom: 12mm;
-    right: 16mm;
-    z-index: 5;
-    text-align: right;
-    direction: ltr;
-    pointer-events: none;
-  }
-  .sig-label {
-    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
-    font-size: 2.8mm;
-    font-style: italic;
-    color: #8a7a6a;
-    opacity: 0.6;
-    letter-spacing: 0.5px;
-    margin-bottom: 1mm;
-    -webkit-font-smoothing: antialiased;
-  }
-  .sig-name {
-    font-family: 'Great Vibes', 'Brush Script MT', cursive;
-    font-size: 7mm;
-    font-weight: 400;
-    color: #5a3a2a;
-    opacity: 0.85;
-    letter-spacing: 1px;
-    line-height: 1;
-    margin-top: -1mm;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    filter: drop-shadow(0 0.5px 1px rgba(0,0,0,0.08));
-  }
-
+  /* ── Gold Emblem Watermark ── */
   .gold-emblem {
     position: absolute;
     top: 50%;
@@ -351,18 +306,18 @@
     filter: drop-shadow(0 0 8px rgba(212,175,55,0.12));
   }
 
-  /* ΓöÇΓöÇ Balloons ΓöÇΓöÇ */
+  /* ── Balloons ── */
   .balloon-group {
     position: absolute;
     z-index: 3;
     pointer-events: none;
   }
   .balloon-group svg { width: 100%; height: 100%; }
-  .balloon-1 { top: 24mm; right: 30mm; width: 28mm; height: 50mm; opacity: 0.75; }
-  .balloon-2 { top: 18mm; right: 56mm; width: 22mm; height: 40mm; opacity: 0.6; }
-  .balloon-3 { top: 30mm; right: 44mm; width: 18mm; height: 32mm; opacity: 0.5; }
+  .balloon-1 { top: 24mm; right: 30mm; width: 28mm; height: 50mm; opacity: 0.65; }
+  .balloon-2 { top: 18mm; right: 56mm; width: 22mm; height: 40mm; opacity: 0.5; }
+  .balloon-3 { top: 30mm; right: 44mm; width: 18mm; height: 32mm; opacity: 0.4; }
 
-  /* ΓöÇΓöÇ Flowers ΓöÇΓöÇ */
+  /* ── Flowers ── */
   .flower {
     position: absolute;
     z-index: 3;
@@ -371,16 +326,31 @@
   .flower svg { width: 100%; height: 100%; overflow: visible; }
   .flower-1 { top: 16mm; left: 10mm; width: 60mm; height: 60mm; opacity: 0.55; }
   .flower-2 { top: 8mm; right: 5mm; width: 75mm; height: 75mm; opacity: 0.4; }
+  .flower-3 { bottom: 12mm; left: 8mm; width: 65mm; height: 65mm; opacity: 0.45; }
+  .flower-4 { bottom: 6mm; right: 8mm; width: 70mm; height: 70mm; opacity: 0.5; }
   .flower-5 { top: 65mm; left: -8mm; width: 50mm; height: 50mm; opacity: 0.3; }
   .flower-6 { bottom: 65mm; right: -8mm; width: 55mm; height: 55mm; opacity: 0.25; }
 
-  /* ΓöÇΓöÇ Stars ΓöÇΓöÇ */
+  /* ── Cake ── */
+  .cake-container {
+    position: absolute;
+    bottom: 58mm;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 3;
+    pointer-events: none;
+    width: 42mm;
+    height: 42mm;
+    opacity: 0.12;
+  }
+  .cake-container svg { width: 100%; height: 100%; }
+
+  /* ── Stars ── */
   .star {
     position: absolute;
     z-index: 3;
     pointer-events: none;
     opacity: 0.55;
-    filter: drop-shadow(0 0 4px rgba(212,175,55,0.2));
   }
   .star svg { width: 100%; height: 100%; overflow: visible; }
   .star-1 { top: 42mm; left: 28mm; width: 7mm; height: 7mm; }
@@ -390,7 +360,7 @@
   .star-5 { bottom: 95mm; left: 32mm; width: 4mm; height: 4mm; }
   .star-6 { top: 68mm; right: 50%; width: 4.5mm; height: 4.5mm; opacity: 0.35; }
 
-  /* ΓöÇΓöÇ Floating Particles ΓöÇΓöÇ */
+  /* ── Floating Particles ── */
   .particles {
     position: absolute;
     inset: 0;
@@ -400,15 +370,15 @@
   }
   .particles svg { width: 100%; height: 100%; }
 
-  /* ΓöÇΓöÇ Mobile Responsive ΓöÇΓöÇ */
+  /* ── Mobile Responsive ── */
   @media screen and (max-width: 850px) {
-    .card-wrapper { padding: 8px; padding-top: 16px; }
+    .card-wrapper { padding: 8px; align-items: flex-start; padding-top: 16px; }
   }
   @media screen and (max-width: 500px) {
     .card-wrapper { padding: 4px; padding-top: 10px; }
   }
 
-  /* ΓöÇΓöÇ Print ΓöÇΓöÇ */
+  /* ── Print ── */
   @media print {
     body { background: white; margin: 0; }
     body::before { display: none; }
@@ -456,12 +426,10 @@
           </linearGradient>
           <linearGradient id="gold-metallic" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#f5e6a3"/>
-            <stop offset="15%" stop-color="#e8c84a"/>
-            <stop offset="25%" stop-color="#d4af37"/>
-            <stop offset="38%" stop-color="#fff8dc"/>
-            <stop offset="50%" stop-color="#c8a84e"/>
-            <stop offset="65%" stop-color="#f5e6a3"/>
-            <stop offset="80%" stop-color="#d4af37"/>
+            <stop offset="20%" stop-color="#d4af37"/>
+            <stop offset="40%" stop-color="#fff8dc"/>
+            <stop offset="55%" stop-color="#c8a84e"/>
+            <stop offset="75%" stop-color="#f5e6a3"/>
             <stop offset="100%" stop-color="#b8860b"/>
           </linearGradient>
         </defs>
@@ -725,7 +693,61 @@
     </svg>
   </div>
 
+  <!-- Flower 3: Rose (bottom left) -->
+  <div class="flower flower-3">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <radialGradient id="rose3-base" cx="45%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="50%" stop-color="#faf6f0"/>
+          <stop offset="80%" stop-color="#f0e8dc"/>
+          <stop offset="100%" stop-color="#e4d6c4"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="50" cy="48" rx="20" ry="24" fill="url(#rose3-base)" transform="rotate(-40,50,48)" opacity="0.45"/>
+      <ellipse cx="50" cy="48" rx="20" ry="24" fill="url(#rose3-base)" transform="rotate(40,50,48)" opacity="0.45"/>
+      <ellipse cx="50" cy="48" rx="20" ry="24" fill="url(#rose3-base)" transform="rotate(100,50,48)" opacity="0.45"/>
+      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(-20,50,48)" opacity="0.6"/>
+      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(30,50,48)" opacity="0.6"/>
+      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(80,50,48)" opacity="0.6"/>
+      <ellipse cx="50" cy="48" rx="15" ry="18" fill="url(#rose3-base)" transform="rotate(130,50,48)" opacity="0.6"/>
+      <ellipse cx="50" cy="48" rx="9" ry="12" fill="url(#rose3-base)" transform="rotate(0,50,48)" opacity="0.75"/>
+      <ellipse cx="50" cy="48" rx="9" ry="12" fill="url(#rose3-base)" transform="rotate(60,50,48)" opacity="0.75"/>
+      <ellipse cx="50" cy="48" rx="9" ry="12" fill="url(#rose3-base)" transform="rotate(120,50,48)" opacity="0.75"/>
+      <circle cx="50" cy="48" r="4" fill="#f5e6a3" opacity="0.45"/>
+      <circle cx="50" cy="48" r="2" fill="#d4af37" opacity="0.3"/>
+      <ellipse cx="47" cy="44" rx="2.5" ry="2" fill="white" opacity="0.12"/>
+      <ellipse cx="35" cy="62" rx="10" ry="4" fill="#c8d6b0" opacity="0.3" transform="rotate(-20,35,62)"/>
+      <ellipse cx="65" cy="60" rx="8" ry="3" fill="#c8d6b0" opacity="0.25" transform="rotate(15,65,60)"/>
+    </svg>
+  </div>
 
+  <!-- Flower 4: Peony (bottom right) -->
+  <div class="flower flower-4">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <radialGradient id="peony3-base" cx="45%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="35%" stop-color="#fcf9f5"/>
+          <stop offset="65%" stop-color="#f2eae0"/>
+          <stop offset="100%" stop-color="#e6d8c6"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(-40,50,45)" opacity="0.4"/>
+      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(20,50,45)" opacity="0.4"/>
+      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(80,50,45)" opacity="0.4"/>
+      <ellipse cx="50" cy="45" rx="22" ry="26" fill="url(#peony3-base)" transform="rotate(140,50,45)" opacity="0.4"/>
+      <ellipse cx="50" cy="45" rx="16" ry="20" fill="url(#peony3-base)" transform="rotate(-10,50,45)" opacity="0.55"/>
+      <ellipse cx="50" cy="45" rx="16" ry="20" fill="url(#peony3-base)" transform="rotate(50,50,45)" opacity="0.55"/>
+      <ellipse cx="50" cy="45" rx="16" ry="20" fill="url(#peony3-base)" transform="rotate(110,50,45)" opacity="0.55"/>
+      <ellipse cx="50" cy="45" rx="10" ry="13" fill="url(#peony3-base)" transform="rotate(15,50,45)" opacity="0.65"/>
+      <ellipse cx="50" cy="45" rx="10" ry="13" fill="url(#peony3-base)" transform="rotate(75,50,45)" opacity="0.65"/>
+      <ellipse cx="50" cy="45" rx="10" ry="13" fill="url(#peony3-base)" transform="rotate(135,50,45)" opacity="0.65"/>
+      <circle cx="50" cy="45" r="4.5" fill="#f5e6a3" opacity="0.35"/>
+      <circle cx="50" cy="45" r="2" fill="#d4af37" opacity="0.25"/>
+      <ellipse cx="47" cy="41" rx="2.5" ry="1.5" fill="white" opacity="0.1"/>
+    </svg>
+  </div>
 
   <!-- Flower 5: Baby's breath (left) -->
   <div class="flower flower-5">
@@ -773,7 +795,22 @@
     </svg>
   </div>
 
-
+  <!-- Cake -->
+  <div class="cake-container">
+    <svg viewBox="0 0 100 100">
+      <rect x="20" y="55" width="60" height="25" rx="3" fill="url(#gold-metallic)" opacity="0.5"/>
+      <rect x="25" y="40" width="50" height="18" rx="2" fill="url(#gold-metallic)" opacity="0.35"/>
+      <rect x="30" y="28" width="40" height="14" rx="2" fill="url(#gold-metallic)" opacity="0.25"/>
+      <path d="M30,28 Q50,22 70,28" fill="none" stroke="url(#gold-metallic)" stroke-width="1" opacity="0.3"/>
+      <rect x="48" y="12" width="4" height="16" rx="1" fill="url(#gold-metallic)" opacity="0.45"/>
+      <ellipse cx="50" cy="12" rx="4" ry="3" fill="#ffcc80" opacity="0.35"/>
+      <ellipse cx="50" cy="11" rx="2" ry="2" fill="#ffab40" opacity="0.25"/>
+      <line x1="25" y1="48" x2="75" y2="48" stroke="url(#gold-metallic)" stroke-width="0.6" opacity="0.2"/>
+      <line x1="30" y1="36" x2="70" y2="36" stroke="url(#gold-metallic)" stroke-width="0.6" opacity="0.2"/>
+      <line x1="28" y1="62" x2="72" y2="62" stroke="url(#gold-metallic)" stroke-width="0.4" opacity="0.15"/>
+      <line x1="22" y1="72" x2="78" y2="72" stroke="url(#gold-metallic)" stroke-width="0.4" opacity="0.15"/>
+    </svg>
+  </div>
 
   <!-- Stars -->
   <div class="star star-1">
@@ -897,7 +934,7 @@
 
     <!-- Arabic Text -->
     <div class="title-ar">
-      كل سنة وحضرتك طيبة وبخير يا <span class="highlight">ميس</span>.<br><br>
+      كل سنة وحضرتك طيبة و خير يا <span class="highlight">ميس</span>.<br><br>
       بجد أتمنى من كل قلبي تكون السنة الجديدة في حياتك مليانة<br>
       سعادة وراحة ونجاح، وربنا يحقق لحضرتك كل اللي بتتمنيه<br>
       ويبارك في عمرك وصحتك ويجعل كل أيامك فرحة.<br><br>
@@ -916,26 +953,29 @@
       نفسك فيه. كل سنة وحضرتك بخير
     </div>
 
-    <!-- Separator -->
-    <div class="text-divider">
-      <svg viewBox="0 0 80 8">
-        <line x1="5" y1="4" x2="35" y2="4" stroke="url(#gold-metallic)" stroke-width="0.5" opacity="0.3"/>
-        <circle cx="40" cy="4" r="2" fill="url(#gold-metallic)" opacity="0.35"/>
-        <line x1="45" y1="4" x2="75" y2="4" stroke="url(#gold-metallic)" stroke-width="0.5" opacity="0.3"/>
+    <!-- Divider -->
+    <div class="divider">
+      <svg viewBox="0 0 100 12">
+        <defs>
+          <linearGradient id="div-gold2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#d4af37" stop-opacity="0"/>
+            <stop offset="40%" stop-color="#c8a84e" stop-opacity="0.3"/>
+            <stop offset="50%" stop-color="#f5e6a3" stop-opacity="0.5"/>
+            <stop offset="60%" stop-color="#c8a84e" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="5" y1="6" x2="44" y2="6" stroke="url(#div-gold2)" stroke-width="0.8"/>
+        <circle cx="50" cy="6" r="2.5" fill="url(#gold-metallic)" opacity="0.45"/>
+        <line x1="56" y1="6" x2="95" y2="6" stroke="url(#div-gold2)" stroke-width="0.8"/>
       </svg>
     </div>
 
-    <!-- Gold Quote under Arabic -->
-    <div class="quote-gold" dir="ltr">
-      <span class="quote-mark">&ldquo;</span>Great teachers inspire minds and change lives forever.<span class="quote-mark">&rdquo;</span>
+    <!-- Bottom Quote -->
+    <div class="bottom-quote" dir="ltr">
+      Great teachers inspire minds and change lives forever.
     </div>
 
-  </div>
-
-  <!-- Bottom-right Signature -->
-  <div class="signature-corner" dir="ltr">
-    <div class="sig-label">With sincere appreciation,</div>
-    <div class="sig-name">Abdo</div>
   </div>
 
 </div>
@@ -956,18 +996,17 @@
     var sx = aw / nw;
     var sy = ah / nh;
     var s = Math.min(sx, sy, 1);
-    card.style.transform = s < 1 ? 'scale(' + s + ')' : '';
-    card.style.transformOrigin = 'center center';
+    if (s < 1) {
+      card.style.transform = 'scale(' + s + ')';
+    } else {
+      card.style.transform = '';
+    }
   }
   scaleCard();
   var timeout;
-  function onResize() {
+  window.addEventListener('resize', function() {
     clearTimeout(timeout);
-    timeout = setTimeout(scaleCard, 120);
-  }
-  window.addEventListener('resize', onResize);
-  window.addEventListener('orientationchange', function() {
-    setTimeout(scaleCard, 300);
+    timeout = setTimeout(scaleCard, 100);
   });
 })();
 </script>
