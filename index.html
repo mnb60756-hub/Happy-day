@@ -381,7 +381,7 @@
 
   /* ΓöÇΓöÇ Mobile Responsive ΓöÇΓöÇ */
   @media screen and (max-width: 850px) {
-    .card-wrapper { padding: 8px; align-items: flex-start; padding-top: 16px; }
+    .card-wrapper { padding: 8px; padding-top: 16px; }
   }
   @media screen and (max-width: 500px) {
     .card-wrapper { padding: 4px; padding-top: 10px; }
@@ -1008,7 +1008,7 @@
     var sy = ah / nh;
     var s = Math.min(sx, sy, 1);
     card.style.transform = s < 1 ? 'scale(' + s + ')' : '';
-    card.style.transformOrigin = 'top center';
+    card.style.transformOrigin = 'center center';
   }
   scaleCard();
   var timeout;
